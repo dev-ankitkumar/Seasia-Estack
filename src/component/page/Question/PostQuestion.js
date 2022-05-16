@@ -28,7 +28,7 @@ export default function AskQuestion() {
     // return () => {
     // dispatch(reset());
     // };
-  }, [navigate, isError, message, dispatch]);
+  }, []);
 
   const OptionsCheck = category?.info?.map((x, index) => {
     return { value: x.id, label: x.category };

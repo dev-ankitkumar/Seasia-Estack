@@ -21,7 +21,7 @@ export default function Header() {
     navigate("/");
   };
   useEffect(() => {
-    console.log(dropDownOption);
+    // console.log(dropDownOption);
     if (navigate && dropDownOption) {
       setDropDownOption(false);
     }
@@ -44,9 +44,6 @@ export default function Header() {
         <ul className="ul-index">
           {user ? (
             <li className="d-flex align-items-center">
-              <NavLink to="/post-question" className="p-r-5">
-                Ask for Help
-              </NavLink>
               <span className="p-r-5 pointer">
                 Welcome {user ? <>{user.user.name}</> : null}
               </span>
@@ -98,7 +95,7 @@ export default function Header() {
           )}
         </ul>
       </header>
-      <SideBar />
+      <SideBar user={user} />
     </>
   );
 }

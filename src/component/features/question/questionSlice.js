@@ -20,7 +20,7 @@ export const getQuestion = createAsyncThunk(
           error.response.data &&
           error.response.data.message) ||
         error.message ||
-        error.string();
+        error.toString();
       return thunkApi.rejectWithValue(message);
     }
   }
@@ -52,7 +52,7 @@ export const questionSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(postQuestion.pending, (state) => {
-        state.isLoading = false;
+        state.isLoading = true;
       })
       .addCase(postQuestion.fulfilled, (state, action) => {
         state.isLoading = false;
@@ -66,7 +66,7 @@ export const questionSlice = createSlice({
         // state.question = null;
       })
       .addCase(getQuestion.pending, (state) => {
-        state.isLoading = false;
+        state.isLoading = true;
       })
       .addCase(getQuestion.fulfilled, (state, action) => {
         state.isLoading = false;

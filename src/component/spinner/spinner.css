@@ -1,0 +1,12 @@
+.spinnerDiv {
+    background-color: #87878752;
+    height: 100vh;
+    position: absolute;
+    width: 100vw;
+    left: 0px;
+    z-index: 999999;
+    top: 0;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}

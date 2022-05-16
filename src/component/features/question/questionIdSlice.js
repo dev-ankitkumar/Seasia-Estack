@@ -1,6 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import questionService from "./questionService";
-// const user = JSON.parse(localStorage.getItem("user"));
+import questionIdService from "./questionIdService";
 const initialState = {
   question: [],
   isError: false,
@@ -13,8 +12,10 @@ export const getQuestionByID = createAsyncThunk(
   "getQuestionByID",
   async (idData, thunkApi) => {
     try {
-      return await questionService.questionGetByID(idData);
+      console.log("clicked1");
+      return await questionIdService.questionGetByID(idData);
     } catch (error) {
+      console.log("clicke2");
       const message =
         (error.response &&
           error.response.data &&
@@ -26,7 +27,7 @@ export const getQuestionByID = createAsyncThunk(
   }
 );
 
-export const questionSlice = createSlice({
+export const questionIdSlice = createSlice({
   name: "question",
   initialState,
   reducers: {
@@ -35,12 +36,12 @@ export const questionSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(getQuestionByID.pending, (state) => {
-        state.isLoading = false;
+        state.isLoading = true;
       })
       .addCase(getQuestionByID.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSucess = true;
-        state.question.push(action.payload);
+        state.question = action.payload;
       })
       .addCase(getQuestionByID.rejected, (state, action) => {
         state.isLoading = false;
@@ -50,5 +51,5 @@ export const questionSlice = createSlice({
       });
   },
 });
-export const { reset } = questionSlice.actions;
-export default questionSlice.reducer;
+export const { reset } = questionIdSlice.actions;
+export default questionIdSlice.reducer;

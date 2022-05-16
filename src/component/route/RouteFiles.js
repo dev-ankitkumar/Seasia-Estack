@@ -10,7 +10,9 @@ import PostQuestion from "../page/Question/PostQuestion";
 import Category from "../page/Category/Category";
 import User from "../page/User/User";
 import ViewSingleQuestion from "../page/Question/ViewSingleQuestion";
+import Spinner from "../spinner/Spinner";
 export default function RouteFiles() {
+  console.log("KArtik  2 2 2 - karta ohi kam ");
   return (
     <>
       <BrowserRouter>
@@ -21,11 +23,12 @@ export default function RouteFiles() {
               <Route path="/" element={<Dashboard />} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
-              <Route path="/question" element={<ViewQuestion />} />
+              <Route exact path="/question" element={<ViewQuestion />} />
               <Route path="/post-question" element={<PostQuestion />} />
               <Route path="/question/:id" element={<ViewSingleQuestion />} />
               <Route path="/user" element={<User />} />
               <Route path="/category" element={<Category />} />
+              <Route path="/loader" element={<Spinner />} />
             </Routes>
           </div>
         </div>
