@@ -10,7 +10,6 @@ const questionGet = async () => {
   //   }
   return response.data;
 };
-
 //question post
 const questionPost = async (userData, token) => {
   const config = {
@@ -20,8 +19,8 @@ const questionPost = async (userData, token) => {
   return response.data;
 };
 
-const authService = {
+const questionIdService = {
   questionGet,
   questionPost,
 };
-export default authService;
+export default questionIdService;

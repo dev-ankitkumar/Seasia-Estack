@@ -28,3 +28,29 @@
     border: 1px solid #ddd;
     margin-bottom: 12px;
 }
+
+.dropdown1 {
+    position: absolute;
+    top: 100%;
+    display: flex;
+    right: -1px;
+    height: fit-content;
+    width: 150px;
+    z-index: 999;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    box-shadow: 0 16px 24px 2px rgb(0 0 0 / 14%);
+    flex-direction: column;
+}
+
+.ul1 {
+    justify-content: space-between;
+    padding-left: 0;
+}
+
+.li1 {
+    padding: 8px 12px;
+    position: absolute;
+    background-color: aliceblue;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    box-shadow: 0 16px 24px 2px rgb(0 0 0 / 14%);
+}

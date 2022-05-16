@@ -9,6 +9,7 @@ import ViewQuestion from "../page/Question/ViewQuestions";
 import PostQuestion from "../page/Question/PostQuestion";
 import Category from "../page/Category/Category";
 import User from "../page/User/User";
+import ViewSingleQuestion from "../page/Question/ViewSingleQuestion";
 export default function RouteFiles() {
   return (
     <>
@@ -22,6 +23,7 @@ export default function RouteFiles() {
               <Route path="/signup" element={<Signup />} />
               <Route path="/question" element={<ViewQuestion />} />
               <Route path="/post-question" element={<PostQuestion />} />
+              <Route path="/question/:id" element={<ViewSingleQuestion />} />
               <Route path="/user" element={<User />} />
               <Route path="/category" element={<Category />} />
             </Routes>

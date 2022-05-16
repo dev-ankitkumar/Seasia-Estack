@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import makeAnimated from "react-select/animated";
+import { getCategory } from "../../features/category/categorySlice";
 import Select from "react-select";
 // import "./askQuestion.css";
 import { useNavigate } from "react-router-dom";
@@ -10,30 +11,47 @@ import { postQuestion } from "../../features/question/questionSlice";
 import { toast } from "react-toastify";
 
 export default function AskQuestion() {
-  const [selectedOption, setSelectedOption] = useState(null);
+  const [category_id, setCategory_id] = useState(null);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  //   const selector = useSelector();
-  // const options1 = tagsData?.data?.info.map((x) => {
-  //   return "{ value: `${x.id}`, label: `${x.category}`" ;
-  // }1
-  // );
+  // const selector = useSelector();
+  const { category, isLoading, isError, message, reset } = useSelector(
+    (state) => state.category
+  );
+  useEffect(() => {
+    if (isError) {
+      console.log("Error ");
+    }
+    dispatch(getCategory());
+    // return () => {
+    // dispatch(reset());
+    // };
+  }, [navigate, isError, message, dispatch]);
+
+  const OptionsCheck = category?.info?.map((x, index) => {
+    return { value: x.id, label: x.category };
+  });
   const myArray = [];
 
   const btnSubmit = (e) => {
     e.preventDefault();
-    dispatch(postQuestion({ title, post_type: 1 }));
-    navigate("/");
-    toast.success("Question Posted Successfully", {
-      position: toast.POSITION.TOP_CENTER,
-    });
+    console.log(category_id[0].value, "cateogry_id");
+    if (!title && !description) {
+      toast.error("Enter the Content", {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+    } else {
+      const cateogry_id = category_id[0].value;
+      dispatch(postQuestion({ cateogry_id, title, description, post_type: 1 }));
+
+      toast.success("Question Posted Successfully", {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+      navigate("/");
+    }
   };
-  function handleTitleChange(e) {
-    setTitle(e.target.value);
-  }
-  function handleAnswerechange(e) {}
 
   return (
     <div>
@@ -79,19 +97,19 @@ export default function AskQuestion() {
               }}
             />
           </div>
-          {/* <div className="question-title">
+          <div className="question-title p-t-10 w-25">
             <label>Tags</label>
             <Select
               closeMenuOnSelect={false}
               isMulti
-              // options={newData}
+              options={OptionsCheck}
               onChange={(e) => {
-                setSelectedOption(e);
+                setCategory_id(e);
               }}
             />
-          </div> */}
-          <div className="question-title p-top-15">
-            <button className="btn btn-block" onClick={btnSubmit}>
+          </div>
+          <div className="question-title p-top-20">
+            <button className="btn btn-primary" onClick={btnSubmit}>
               Submit
             </button>
           </div>

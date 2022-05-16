@@ -5,7 +5,7 @@ const categoryGet = async () => {
   const response = await axios.get(base_URL + "getcategory");
   return response.data;
 };
-const authService = {
+const categoryService = {
   categoryGet,
 };
-export default authService;
+export default categoryService;

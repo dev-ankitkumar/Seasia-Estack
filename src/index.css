@@ -64,9 +64,9 @@ h3 {
   justify-content: space-between;
 }
 
-.header ul li {
+/* .header ul li {
   margin-left: 20px;
-}
+} */
 
 .header ul li a {
   display: flex;
