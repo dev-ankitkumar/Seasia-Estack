@@ -28,17 +28,18 @@ export default function ViewQuestion() {
 
   return (
     <>
-      <div className="d-flex">
-        <section className="form">
+      <div className="Questions-div">
+        <section className="">
           <div className="form-group p-t-20 text-start pointer">
             {!filterCategory
               ? question?.map((x, index) => (
                   <div key={index}>
                     <NavLink to={`/question/${x.id}`}>
-                      <div className="shadow-sm p-3 mb-5 bg-body rounded">
+                      <div className="shadow-sm p-3 mb-5 bg-body rounded text-black">
                         <div className="fs-3 fw-semibold">{x.id}</div>
                         <div className="fs-3 fw-semibold">{x.title}</div>
                         <div className="fs-5">{x.description}</div>
+                        <div>{x.user_id}</div>
                         <div className="d-flex fs-6 justify-content-between text-muted">
                           <div>
                             Created at{" "}
@@ -49,7 +50,6 @@ export default function ViewQuestion() {
                             {new Date(`${x.updated_at}`).toDateString()}
                           </div>
                         </div>
-                        <div>{x.user_id}</div>
                       </div>
                     </NavLink>
                   </div>
@@ -61,7 +61,7 @@ export default function ViewQuestion() {
                       <NavLink to={`/question/${x.id}`}>
                         <div
                           key={index}
-                          className="shadow-sm p-3 mb-5 bg-body rounded"
+                          className="shadow-sm p-3 mb-5 bg-body rounded text-black"
                         >
                           <div className="fs-3 fw-semibold">{x.title}</div>
                           <div className="fs-5">{x.description}</div>
@@ -71,31 +71,60 @@ export default function ViewQuestion() {
                   ))}
           </div>
         </section>
-        <section className="w-25  shadow-sm bg-light">
+        <section className="shadow-sm question-rightBar">
           <div className="form-group p-t-20">
-            <div>Categories</div>
-            <button
-              className="btn"
+            <div className="rightBar-heading">Categories</div>
+            <div className="rightBar-body">
+            <p
+              className="pointer"
               onClick={() => {
                 setFilterCategory(false);
               }}
-            >
+              >
               All
-            </button>
+            </p>
             {category?.info?.map((x, index) => (
               <div key={index}>
-                <button
-                  className="btn"
+                <p
+                  className="pointer"
                   onClick={() => {
                     setFilterCategory(true);
                     setCategorySelection(x.id);
                   }}
-                >
+                  >
                   {x.category}
-                </button>
+                </p>
                 {/* <div>Description:{x.description}</div> */}
               </div>
             ))}
+            </div>
+          </div>
+          <div className="form-group p-t-20">
+            <div className="rightBar-heading">Tabs</div>
+            <div className="rightBar-body">
+            <p
+              className="pointer"
+              onClick={() => {
+                setFilterCategory(false);
+              }}
+              >
+              All
+            </p>
+            {category?.info?.map((x, index) => (
+              <div key={index}>
+                <p
+                  className="pointer"
+                  onClick={() => {
+                    setFilterCategory(true);
+                    setCategorySelection(x.id);
+                  }}
+                  >
+                  {x.category}
+                </p>
+                {/* <div>Description:{x.description}</div> */}
+              </div>
+            ))}
+            </div>
           </div>
         </section>
       </div>
