@@ -48,8 +48,8 @@ export default function Login() {
     return <Spinner />;
   }
   return (
-    <>
-      <section className="heading">
+    <section className="profile-card m-5 py-5 shadow">
+      <section className="h1 text-white mb-4">
         <p>Enter Your Details </p>
       </section>
       <section className="form">
@@ -76,10 +76,10 @@ export default function Login() {
               onChange={handleChange}
             />
           </div>
-          <div className="form-group">
+          <div className="form-group mt-5">
             <button
               type="submit"
-              className="btn btn-primary"
+              className="btn btn-success"
               disabled={isLoading}
             >
               Submit
@@ -87,6 +87,6 @@ export default function Login() {
           </div>
         </form>
       </section>
-    </>
+    </section>
   );
 }
