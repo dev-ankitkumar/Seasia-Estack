@@ -121,7 +121,8 @@ export default function AskQuestion() {
             <label>
               Tags
             </label>
-            <Select className='text-dark tag-list custom-scroller'
+            <Select className='text-dark'
+              classNamePrefix="tag-list"
               closeMenuOnSelect={false}
               isMulti
               options={OptionsCheck}

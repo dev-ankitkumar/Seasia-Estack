@@ -35,12 +35,12 @@ export default function ViewQuestion() {
               ? question?.map((x, index) => (
                   <div key={index} className="mb-4">
                     <NavLink to={`/question/${x.id}`} >
-                      <div className="shadow-sm p-3 bg-body rounded text-black custom-scroller"  style={{maxHeight: "220px", minHeight: "200px"}}>
-                        <div className="fs-3 fw-semibold">{x.id}</div>
-                        <div className="fs-3 fw-semibold">{x.title}</div>
-                        <div className="fs-5">{x.description}</div>
+                      <div className="shadow-sm p-3 bg-light rounded text-black question-Card ">
+                        {/* <div className="fs-3 fw-semibold">{x.id}</div> */}
+                        <div className="fs-4 fw-semibold border-bottom mb-2 pb-1">{x.title}</div>
+                        <div className="fs-5 custom-scroller">{x.description}</div>
                         {/* <div>{x.user_id}</div> */}
-                        <div className="d-flex fs-6 justify-content-between text-muted">
+                        <div className="fs-6 text-muted d-flex justify-content-between w-100">
                           <div>
                             Created at{" "}
                             {new Date(`${x.created_at}`).toDateString()}

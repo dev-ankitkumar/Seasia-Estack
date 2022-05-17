@@ -35,7 +35,7 @@ export default function Signup() {
       navigate("/");
     }
     dispatch(reset());
-  }, [user]);
+  }, [user, isError, isLoading, isSuccess, navigate, dispatch]);
   const submitHandle = (e) => {
     e.preventDefault();
     if (password !== password2) {
@@ -128,9 +128,9 @@ export default function Signup() {
               onChange={handleChange}
             />
           </div>
-          <div class="form-group form-check">
+          <div class="form-check  text-start">
             <input type="checkbox" class="form-check-input" id="exampleCheck1"/>
-            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+            <label class="form-check-label" for="exampleCheck1">Please check to indicate that you agree with the <span className="text-info ">Terms of Use</span></label>
           </div>
           <div className="form-group mt-4">
             <button

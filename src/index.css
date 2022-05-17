@@ -1,6 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 @import 'bootstrap/dist/css/bootstrap.css';
 
+/* html {
+	filter: invert(1) hue-rotate(180deg);
+}
+
+img {
+	filter: invert(1) hue-rotate(180deg);
+} */
 
 * {
   margin: 0;
@@ -134,8 +141,19 @@ h3 {
 
 .form1,
 .content {
-  width: 60%;
+  width: 75%;
   margin: 0 auto;
+}
+
+.form1 .form-check-input:checked {
+  background-color: #198754;
+    border-color: #198754;
+}
+
+.form1 .form-check-input:focus {
+  border-color: #85e5b8;
+  outline: 0;
+  box-shadow: 0 0 0 0.15rem #00d32350;
 }
 
 .form,
@@ -350,7 +368,7 @@ h3 {
   background: #f1f1f100; 
 }
 
-.custom-scroller::-webkit-scrollbar-thumb {
+.custom-scroller:hover::-webkit-scrollbar-thumb {
   background: #cacaca;
   border-radius: 8px
 }
@@ -359,6 +377,38 @@ h3 {
   background: #555; 
 }
 
-.tag-list {
+.question-Card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: start;
+  max-height: 220px;
+  min-height: 200px;
+}
 
+.single-qust-card {
+  background-color: white;
+  border-radius: 8px;
+  font-size: 1.3rem;
+  margin-bottom: 2rem;
+  min-height: 400px;
+}
+
+.tag-list__menu-list::-webkit-scrollbar {
+  width: 8px;
+}
+.tag-list__menu-list::-webkit-scrollbar-track {
+  background: #f1f1f100; 
+}
+
+.tag-list__menu-list:hover::-webkit-scrollbar-thumb {
+  background: #cacaca;
+  border-radius: 8px
+}
+.tag-list__menu-list::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+.tag-list__option {
+  border-bottom: 1px solid #18099e85;
 }
