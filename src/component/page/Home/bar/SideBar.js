@@ -33,6 +33,32 @@ export default function SideBar(props) {
             <></>
           )}
           <NavLink
+            to="/post-question"
+            className="p-b-10 p-t-10 text-color"
+            style={({ isActive }) => ({
+              color: isActive ? "black" : "",
+              background: isActive ? "rgb(72 133 225)" : "",
+              borderRadius: isActive ? "10px" : "",
+            })}
+          >
+            Ask for Help
+          </NavLink>
+          {props.user ? (
+            <NavLink
+              to="/"
+              className="p-b-10 p-t-10 text-color"
+              style={({ isActive }) => ({
+                color: isActive ? "black" : "",
+                background: isActive ? "rgb(72 133 225)" : "",
+                borderRadius: isActive ? "10px" : "",
+              })}
+            >
+              My Questions
+            </NavLink>
+          ) : (
+            <></>
+          )}
+          <NavLink
             to="/question"
             className="p-b-10 p-t-10 text-color ps-3"
             style={({ isActive }) => ({
@@ -65,6 +91,7 @@ export default function SideBar(props) {
           >
             User
           </NavLink>
+          <NavLink to="/loader">loader</NavLink>
         </div>
       </div>
     </div>
