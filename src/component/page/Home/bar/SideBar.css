@@ -114,23 +114,19 @@ a:active {
 
 .h-sideBar {
     height: 100%;
-    width: 15%;
+    width: 20%;
     position: fixed;
     z-index: 1;
-    /* top: 0; */
     left: 0;
-    /* position: relative; */
-    /* margin-top: 10%; */
-    /* background-color: #1876d2 !important; */
+    background-color: #151931;
     transition: .5s ease;
     overflow-x: hidden;
     padding-top: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* position: relative; */
     float: left;
-    margin: 0;
+    margin: 62px 0 0;
     display: inline-block;
     min-width: 200px
 }

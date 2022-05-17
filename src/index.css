@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+@import 'bootstrap/dist/css/bootstrap.css';
+
 
 * {
   margin: 0;
@@ -9,11 +11,13 @@
 body {
   font-family: 'Poppins', sans-serif;
   height: 100vh;
+  background-color: #151f2e !important;
+  color: #e6e6e6 !important;
 }
 
 a {
   text-decoration: none !important;
-  color: #000 !important;
+  /* color: #000 !important; */
 }
 
 p {
@@ -53,9 +57,7 @@ h3 {
   width: 100%;
   padding-left: 10px;
   padding-right: 10px;
-  /* padding: 10px 0; */
-  border-bottom: 1px solid #e6e6e6;
-  /* margin-bottom: 30px; */
+  background-color: #08023c;
 }
 
 .header ul {
@@ -64,9 +66,13 @@ h3 {
   justify-content: space-between;
 }
 
-/* .header ul li {
-  margin-left: 20px;
-} */
+.text-white{
+  color: #FFFAFA;
+}
+
+.text-black{
+  color: #1c1a1a;
+}
 
 .header ul li a {
   display: flex;
@@ -83,6 +89,10 @@ h3 {
 
 .ul-index {
   margin-bottom: 0 !important;
+}
+
+.ask-for-help {
+  color: #fed117 !important;
 }
 
 .pointer {
@@ -151,7 +161,7 @@ h3 {
 
 .form-group label {
   text-align: left;
-  display: block;
+  display: table;
   margin: 0 0 5px 3px;
 }
 
@@ -219,7 +229,7 @@ h3 {
   padding-top: 20px;
 }
 
-.btn {
+/* .btn {
   padding: 10px 20px;
   border: 1px solid #000;
   border-radius: 5px;
@@ -233,7 +243,7 @@ h3 {
   display: flex;
   align-items: center;
   justify-content: center;
-}
+} */
 
 .btn svg {
   margin-right: 8px;
@@ -297,4 +307,50 @@ h3 {
   .heading p {
     font-size: 1.5rem;
   }
+}
+
+/* all questions */
+.question-rightBar {
+  background-color: #151931;
+  width: 20%;
+  color: #FFFAFA;
+  position: fixed;
+  right: 0;
+  top: 62px;
+  height: 100vh;
+}
+
+.Questions-div {
+  width: 73.5%;
+  padding: 0 1rem;
+  margin: 0 auto 0 0.5rem;
+}
+
+.rightBar-heading {
+  color: #fed117;
+}
+
+.rightBar-body {
+  max-height: 35.5vh;
+  overflow-y: scroll;
+  border-radius: 5px;
+  background-color: rgba(180, 180, 180, 0.116);
+  margin: 0.7rem;
+}
+
+.rightBar-body::-webkit-scrollbar {
+  width: 8px;
+}
+
+.rightBar-body::-webkit-scrollbar-track {
+  background: #f1f1f100; 
+}
+
+.rightBar-body::-webkit-scrollbar-thumb {
+  background: #eeeeee;
+  border-radius: 8px
+}
+
+.rightBar-body::-webkit-scrollbar-thumb:hover {
+  background: #555; 
 }
