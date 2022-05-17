@@ -34,7 +34,7 @@ export const categorySlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(getCategory.pending, (state) => {
-        state.isLoading = false;
+        state.isLoading = true;
       })
       .addCase(getCategory.fulfilled, (state, action) => {
         state.isLoading = false;

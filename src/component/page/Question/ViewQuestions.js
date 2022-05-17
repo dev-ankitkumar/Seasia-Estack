@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
 import { reset } from "../../features/auth/authSlice";
 import { getCategory } from "../../features/category/categorySlice";
-
+import { getQuestionByID } from "../../features/question/questionIdSlice";
 import { getQuestion } from "../../features/question/questionSlice";
 import Spinner from "../../spinner/Spinner";
 export default function ViewQuestion() {

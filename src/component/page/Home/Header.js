@@ -20,7 +20,7 @@ export default function Header() {
     navigate("/");
   };
   useEffect(() => {
-    console.log(dropDownOption);
+    // console.log(dropDownOption);
     if (navigate && dropDownOption) {
       setDropDownOption(false);
     }
@@ -43,11 +43,16 @@ export default function Header() {
         <ul className="ul-index">
           {user ? (
             <li className="d-flex align-items-center">
-              <NavLink to="/post-question" className="pe-3 ask-for-help">
+
+              {/* <NavLink to="/post-question" className="pe-3 ask-for-help">
                 Ask for Help!
-              </NavLink>
+              </NavLink> */}
+
+
               <span className="p-r-5 pointer">
+
                 Welcome {user ? <span style={{fontWeight: "bold"}}>{user.user.name}</span> : null}
+
               </span>
 
               <button
@@ -85,11 +90,17 @@ export default function Header() {
             </li>
           ) : (
             <li className="d-flex">
-              <NavLink to="/login" className="btn btn-success text-white p-r-20 me-2">
-                <img src={login} alt="" className="me-2"/>
+              <NavLink
+                to="/login"
+                className="btn btn-success text-white p-r-20 me-2"
+              >
+                <img src={login} alt="" className="me-2" />
                 login
               </NavLink>
-              <NavLink to="/signup" className="btn btn-outline-success text-white">
+              <NavLink
+                to="/signup"
+                className="btn btn-outline-success text-white"
+              >
                 <img src={signup} alt="" className="me-2" />
                 Signup
               </NavLink>
@@ -97,7 +108,7 @@ export default function Header() {
           )}
         </ul>
       </header>
-      <SideBar />
+      <SideBar user={user} />
     </>
   );
 }

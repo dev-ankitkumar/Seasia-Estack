@@ -28,7 +28,7 @@ export default function Login() {
       });
     }
     dispatch(reset());
-  }, [user, isError, isLoading, isSuccess, navigate, dispatch]);
+  }, [user]);
 
   const handleChange = (e) => {
     setFormData((prevState) => ({

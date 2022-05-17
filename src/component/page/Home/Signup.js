@@ -35,7 +35,7 @@ export default function Signup() {
       navigate("/");
     }
     dispatch(reset());
-  }, [user, isError, isLoading, isSuccess, navigate, dispatch]);
+  }, [user]);
   const submitHandle = (e) => {
     e.preventDefault();
     if (password !== password2) {
