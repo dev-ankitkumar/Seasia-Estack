@@ -16,7 +16,7 @@ export default function RouteFiles() {
       <BrowserRouter>
         <div className="container">
           <Header />
-          <div style={{ marginLeft: "220px" }}>
+          <div style={{ marginLeft: "285px", paddingTop: "63px" }}>
             <Routes>
               <Route path="/" element={<Dashboard />} />
               <Route path="/login" element={<Login />} />
