@@ -34,11 +34,16 @@ export default function ViewQuestion() {
             {!filterCategory
               ? question?.map((x, index) => (
                   <div key={index} className="mb-4">
-                    <NavLink to={`/question/${x.id}`} >
-                      <div className="shadow-sm p-3 bg-body rounded text-black custom-scroller"  style={{maxHeight: "220px", minHeight: "200px"}}>
-                        <div className="fs-3 fw-semibold">{x.id}</div>
+                    <NavLink to={`/question/${x.id}`}>
+                      <div
+                        className="shadow-sm p-3 bg-body rounded text-black custom-scroller"
+                        style={{ maxHeight: "220px", minHeight: "200px" }}
+                      >
+                        {/* <div className="fs-3 fw-semibold">{x.id}</div> */}
                         <div className="fs-3 fw-semibold">{x.title}</div>
-                        <div className="fs-5">{x.description}</div>
+                        <div className="fs-5 text-excilips">
+                          {x.description}
+                        </div>
                         {/* <div>{x.user_id}</div> */}
                         <div className="d-flex fs-6 justify-content-between text-muted">
                           <div>
@@ -63,8 +68,12 @@ export default function ViewQuestion() {
                           key={index}
                           className="shadow-sm p-3 mb-5 bg-body rounded text-black"
                         >
-                          <div className="fs-3 fw-semibold">{x.title}</div>
-                          <div className="fs-5">{x.description}</div>
+                          <div className="fs-3 fw-semibold ">{x.title}</div>
+                          {/* <div class="row"> */}
+                          <div className="fs-5 text-excilips">
+                            {x.description}
+                          </div>
+                          {/* </div> */}
                         </div>
                       </NavLink>
                     </div>
@@ -75,55 +84,55 @@ export default function ViewQuestion() {
           <div className="form-group p-t-20">
             <div className="rightBar-heading">Categories</div>
             <div className="rightBar-body custom-scroller">
-            <p
-              className="pointer"
-              onClick={() => {
-                setFilterCategory(false);
-              }}
+              <p
+                className="pointer"
+                onClick={() => {
+                  setFilterCategory(false);
+                }}
               >
-              All
-            </p>
-            {category?.info?.map((x, index) => (
-              <div key={index}>
-                <p
-                  className="pointer"
-                  onClick={() => {
-                    setFilterCategory(true);
-                    setCategorySelection(x.id);
-                  }}
+                All
+              </p>
+              {category?.info?.map((x, index) => (
+                <div key={index}>
+                  <p
+                    className="pointer"
+                    onClick={() => {
+                      setFilterCategory(true);
+                      setCategorySelection(x.id);
+                    }}
                   >
-                  {x.category}
-                </p>
-                {/* <div>Description:{x.description}</div> */}
-              </div>
-            ))}
+                    {x.category}
+                  </p>
+                  {/* <div>Description:{x.description}</div> */}
+                </div>
+              ))}
             </div>
           </div>
           <div className="form-group p-t-20">
             <div className="rightBar-heading">Tabs</div>
             <div className="rightBar-body custom-scroller">
-            <p
-              className="pointer"
-              onClick={() => {
-                setFilterCategory(false);
-              }}
+              <p
+                className="pointer"
+                onClick={() => {
+                  setFilterCategory(false);
+                }}
               >
-              All
-            </p>
-            {category?.info?.map((x, index) => (
-              <div key={index}>
-                <p
-                  className="pointer"
-                  onClick={() => {
-                    setFilterCategory(true);
-                    setCategorySelection(x.id);
-                  }}
+                All
+              </p>
+              {category?.info?.map((x, index) => (
+                <div key={index}>
+                  <p
+                    className="pointer"
+                    onClick={() => {
+                      setFilterCategory(true);
+                      setCategorySelection(x.id);
+                    }}
                   >
-                  {x.category}
-                </p>
-                {/* <div>Description:{x.description}</div> */}
-              </div>
-            ))}
+                    {x.category}
+                  </p>
+                  {/* <div>Description:{x.description}</div> */}
+                </div>
+              ))}
             </div>
           </div>
         </section>
