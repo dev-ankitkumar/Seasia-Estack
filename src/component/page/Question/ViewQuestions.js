@@ -33,13 +33,13 @@ export default function ViewQuestion() {
           <div className="form-group p-t-20 text-start pointer">
             {!filterCategory
               ? question?.map((x, index) => (
-                  <div key={index}>
-                    <NavLink to={`/question/${x.id}`}>
-                      <div className="shadow-sm p-3 mb-5 bg-body rounded text-black">
+                  <div key={index} className="mb-4">
+                    <NavLink to={`/question/${x.id}`} >
+                      <div className="shadow-sm p-3 bg-body rounded text-black custom-scroller"  style={{maxHeight: "220px", minHeight: "200px"}}>
                         <div className="fs-3 fw-semibold">{x.id}</div>
                         <div className="fs-3 fw-semibold">{x.title}</div>
                         <div className="fs-5">{x.description}</div>
-                        <div>{x.user_id}</div>
+                        {/* <div>{x.user_id}</div> */}
                         <div className="d-flex fs-6 justify-content-between text-muted">
                           <div>
                             Created at{" "}
@@ -74,7 +74,7 @@ export default function ViewQuestion() {
         <section className="shadow-sm question-rightBar">
           <div className="form-group p-t-20">
             <div className="rightBar-heading">Categories</div>
-            <div className="rightBar-body">
+            <div className="rightBar-body custom-scroller">
             <p
               className="pointer"
               onClick={() => {
@@ -101,7 +101,7 @@ export default function ViewQuestion() {
           </div>
           <div className="form-group p-t-20">
             <div className="rightBar-heading">Tabs</div>
-            <div className="rightBar-body">
+            <div className="rightBar-body custom-scroller">
             <p
               className="pointer"
               onClick={() => {

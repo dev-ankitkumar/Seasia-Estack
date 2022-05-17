@@ -338,19 +338,27 @@ h3 {
   margin: 0.7rem;
 }
 
-.rightBar-body::-webkit-scrollbar {
+.custom-scroller {
+  overflow-y: scroll;
+}
+
+.custom-scroller::-webkit-scrollbar {
   width: 8px;
 }
 
-.rightBar-body::-webkit-scrollbar-track {
+.custom-scroller::-webkit-scrollbar-track {
   background: #f1f1f100; 
 }
 
-.rightBar-body::-webkit-scrollbar-thumb {
-  background: #eeeeee;
+.custom-scroller::-webkit-scrollbar-thumb {
+  background: #cacaca;
   border-radius: 8px
 }
 
-.rightBar-body::-webkit-scrollbar-thumb:hover {
+.custom-scroller::-webkit-scrollbar-thumb:hover {
   background: #555; 
+}
+
+.tag-list {
+
 }
