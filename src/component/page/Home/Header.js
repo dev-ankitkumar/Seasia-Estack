@@ -50,8 +50,9 @@ export default function Header() {
 
 
               <span className="p-r-5 pointer">
-                Welcome
-                {user ? <span className="">{user.user.name}</span> : null}
+
+                Welcome {user ? <span style={{fontWeight: "bold"}}>{user.user.name}</span> : null}
+
               </span>
 
               <button
@@ -73,7 +74,7 @@ export default function Header() {
                 <div className="dropdown1">
                   <ul className="ul1 flex-column">
                     <li className="li1">
-                      <button className="btn btn-success" onClick={btnLogout}>
+                      <button className="btn btn-danger" onClick={btnLogout}>
                         <img src={signoutlogo} className="me-2" alt="" />
                         LogOut
                       </button>

@@ -118,14 +118,10 @@ export default function AskQuestion() {
             />
           </div>
           <div className="question-title p-t-10 w-25">
-            <label
-              data-bs-toggle="tooltip"
-              data-bs-placement="top"
-              title="asdasdasd on top"
-            >
+            <label>
               Tags
             </label>
-            <Select className='text-dark'
+            <Select className='text-dark tag-list custom-scroller'
               closeMenuOnSelect={false}
               isMulti
               options={OptionsCheck}

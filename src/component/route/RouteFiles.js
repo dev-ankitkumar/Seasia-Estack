@@ -28,7 +28,7 @@ export default function RouteFiles() {
               <Route path="/question/:id" element={<ViewSingleQuestion />} />
               <Route path="/user" element={<User />} />
               <Route path="/category" element={<Category />} />
-              <Route path="/loader" element={<Spinner />} />
+              {/* <Route path="/loader" element={<Spinner />} /> */}
             </Routes>
           </div>
         </div>
