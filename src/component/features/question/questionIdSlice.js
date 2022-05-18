@@ -29,6 +29,7 @@ export const getQuestionByID = createAsyncThunk(
 export const postAnswerByID = createAsyncThunk(
   "postAnswerById",
   async (userData, thunkApi) => {
+    console.log(userData);
     try {
       const token = thunkApi.getState().auth.user.access_token;
       return await questionIdService.AnswerPostById(userData, token);

@@ -25,6 +25,7 @@ export default function AskQuestion() {
   const { category, isLoading, isError, message, reset } = useSelector(
     (state) => state.category
   );
+
   useEffect(() => {
     if (isError) {
       console.log("Error ");
