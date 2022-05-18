@@ -5,7 +5,8 @@ import { getQuestionByID } from "../../features/question/questionIdSlice";
 import { questionPostByVoteId } from "../../features/question/questionByVoteSlice";
 import CkEditorHtmlShow from "./CkEditorHtmlShow";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
-import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import Editor from "ckeditor5-custom-build/build/ckeditor";
+// import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 export default function ViewSingleQuestion() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -19,6 +20,35 @@ export default function ViewSingleQuestion() {
   );
 
   const questiondata = question?.data;
+  // const new1 = questiondata?.answers.length;
+  // if (new1.length < 0) {
+  //   console.log(new1, "new1");
+  // }
+  const answerData = questiondata?.answers.map((x) => {
+    // console.log("selected");
+    if (x.length !== 0) {
+      console.log("selected1");
+      <div className="single-qust-card">
+        <div className="text-start pointer">
+          <div className="p-3">
+            <div className="border-bottom pb-1">Title: {x.title}</div>
+            <div className="mt-2">
+              <CkEditorHtmlShow data={x.description} />
+            </div>
+            {/* <div className="mt-2">{x.description}</div> */}
+          </div>
+        </div>
+        <button
+          onClick={() => {
+            const data = { answer_id: x.question_id, vote: +1 };
+            dispatch(questionPostByVoteId(data));
+          }}
+        >
+          Vote Click
+        </button>
+      </div>;
+    }
+  });
   return (
     <section className="text-dark m-5 pb-4">
       <div>
@@ -28,38 +58,16 @@ export default function ViewSingleQuestion() {
               <div className="p-3">
                 <div className="border-bottom pb-1">Title: {x.title}</div>
                 <CkEditorHtmlShow data={x.description} />
-                {/* <div className="mt-2">{x.description}</div> */}
               </div>
             </div>
           </div>
         ))}
       </div>
-      <div>
-        {questiondata?.answers.map((x) => (
-          <>
-            <div className="single-qust-card">
-              <div className="text-start pointer">
-                <div className="p-3">
-                  <div className="border-bottom pb-1">Title: {x.title}</div>
-                  <div className="mt-2">{x.description}</div>
-                </div>
-              </div>
-              <button
-                onClick={() => {
-                  const data = { answer_id: x.question_id, vote: +1 };
-                  dispatch(questionPostByVoteId(data));
-                }}
-              >
-                Vote Click
-              </button>
-            </div>
-          </>
-        ))}
-      </div>
+      <div>{answerData}</div>
       <div className="single-qust-card">
         <div className="text-start pointer">
           <CKEditor
-            editor={ClassicEditor}
+            editor={Editor}
             data=""
             config={{ placeholder: "Enter Your Description..." }}
             // placeholder="Enter Your Description"

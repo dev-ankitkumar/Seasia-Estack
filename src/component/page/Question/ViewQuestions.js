@@ -5,6 +5,7 @@ import { reset } from "../../features/auth/authSlice";
 import { getCategory } from "../../features/category/categorySlice";
 import { getQuestionByID } from "../../features/question/questionIdSlice";
 import { getQuestion } from "../../features/question/questionSlice";
+import FilteredQuestion from "./FilteredQuestion";
 import Spinner from "../../spinner/Spinner";
 import Pagination from "../Pagination/Pagination";
 export default function ViewQuestion() {
@@ -17,11 +18,12 @@ export default function ViewQuestion() {
   const { question, isLoading, isError, message } = useSelector(
     (state) => state.question
   );
+
   const { category } = useSelector((state) => state.category);
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstpost = indexOfLastPost - postsPerPage;
   const currentPosts = question.slice(indexOfFirstpost, indexOfLastPost);
-  // const filteredPosts = filteredPosts1.slice(indexOfFirstpost, indexOfLastPost);
+
   const filteredPosts1 = [];
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -36,58 +38,51 @@ export default function ViewQuestion() {
     //   dispatch(reset());
     // };
   }, [navigate, isError, message, dispatch]);
-
+  if (isLoading) return <Spinner />;
   return (
     <>
       <div className="Questions-div">
         <section className="">
           <div className="form-group p-t-20 text-start pointer">
-            {!filterCategory
-              ? currentPosts?.map((x, index) => (
-                  <>
-                    <div key={index} className="mb-4">
-                      <NavLink to={`/question/${x.id}`}>
-                        <div className="shadow-sm p-3 bg-light rounded text-black question-Card ">
-                          {/* <div className="fs-3 fw-semibold">{x.id}</div> */}
-                          <div className="fs-4 fw-semibold border-bottom mb-2 pb-1">
-                            {x.title}
+            {!filterCategory ? (
+              currentPosts?.map((x, index) => (
+                <>
+                  <div key={index} className="mb-4">
+                    <NavLink to={`/question/${x.id}`}>
+                      <div className="shadow-sm p-3 bg-light rounded text-black question-Card ">
+                        {/* <div className="fs-3 fw-semibold">{x.id}</div> */}
+                        <div className="fs-4 fw-semibold border-bottom mb-2 pb-1">
+                          {x.title}
+                        </div>
+                        <div className="fs-5  text-excilips">
+                          {x.description}
+                        </div>
+                        {/* <div>{x.user_id}</div> */}
+                        <div className="fs-6 text-muted d-flex justify-content-between w-100">
+                          <div>
+                            Created at{" "}
+                            {new Date(`${x.created_at}`).toDateString()}
                           </div>
-                          <div className="fs-5  text-excilips">
-                            {x.description}
-                          </div>
-                          {/* <div>{x.user_id}</div> */}
-                          <div className="fs-6 text-muted d-flex justify-content-between w-100">
-                            <div>
-                              Created at{" "}
-                              {new Date(`${x.created_at}`).toDateString()}
-                            </div>
-                            <div>
-                              Updated_at at{" "}
-                              {new Date(`${x.updated_at}`).toDateString()}
-                            </div>
+                          <div>
+                            Updated_at at{" "}
+                            {new Date(`${x.updated_at}`).toDateString()}
                           </div>
                         </div>
-                      </NavLink>
-                    </div>
-                  </>
-                ))
-              : question
-                  ?.filter((x) => x.cateogry_id == `${categorySelection}`)
-                  .map((x, index) => (
-                    <div key={index}>
-                      <NavLink to={`/question/${x.id}`}>
-                        <div
-                          key={index}
-                          className="shadow-sm p-3 mb-5 bg-body rounded text-black"
-                        >
-                          <div className="fs-3 fw-semibold">{x.title}</div>
-                          <div className="fs-5  text-excilips">
-                            {x.description}
-                          </div>
-                        </div>
-                      </NavLink>
-                    </div>
-                  ))}
+                      </div>
+                    </NavLink>
+                  </div>
+                </>
+              ))
+            ) : (
+              <FilteredQuestion
+                question={question}
+                indexOfLastPost={indexOfLastPost}
+                indexOfFirstpost={indexOfFirstpost}
+                categorySelection={categorySelection}
+                postsPerPage={postsPerPage}
+                paginate={paginate}
+              />
+            )}
 
             {!filterCategory ? (
               <Pagination
@@ -119,6 +114,7 @@ export default function ViewQuestion() {
                     onClick={() => {
                       setFilterCategory(true);
                       setCategorySelection(x.id);
+                      setCurrentPage(1);
                     }}
                   >
                     {x.category}
@@ -146,6 +142,7 @@ export default function ViewQuestion() {
                     onClick={() => {
                       setFilterCategory(true);
                       setCategorySelection(x.id);
+                      setCurrentPage(1);
                     }}
                   >
                     {x.category}
