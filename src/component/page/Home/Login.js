@@ -76,9 +76,15 @@ export default function Login() {
               onChange={handleChange}
             />
           </div>
-          <div class="form-check text-start">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1"/>
-            <label class="form-check-label" for="exampleCheck1">Remember me</label>
+          <div className="form-check text-start">
+            <input
+              type="checkbox"
+              className="form-check-input"
+              id="exampleCheck1"
+            />
+            <label className="form-check-label" for="exampleCheck1">
+              Remember me
+            </label>
           </div>
           <div className="form-group mt-4">
             <button

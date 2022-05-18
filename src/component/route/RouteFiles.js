@@ -12,7 +12,6 @@ import User from "../page/User/User";
 import ViewSingleQuestion from "../page/Question/ViewSingleQuestion";
 import Spinner from "../spinner/Spinner";
 export default function RouteFiles() {
-  console.log("KArtik  2 2 2 - karta ohi kam ");
   return (
     <>
       <BrowserRouter>

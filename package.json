@@ -11,6 +11,7 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.27.2",
     "bootstrap": "^5.0.1",
+    "ckeditor5-custom-build": "file:ckeditor5",
     "i": "^0.3.7",
     "npm": "^8.10.0",
     "react": "^18.1.0",

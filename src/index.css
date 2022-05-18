@@ -73,11 +73,11 @@ h3 {
   justify-content: space-between;
 }
 
-.text-white{
+.text-white {
   color: #FFFAFA;
 }
 
-.text-black{
+.text-black {
   color: #1c1a1a;
 }
 
@@ -147,7 +147,7 @@ h3 {
 
 .form1 .form-check-input:checked {
   background-color: #198754;
-    border-color: #198754;
+  border-color: #198754;
 }
 
 .form1 .form-check-input:focus {
@@ -365,7 +365,7 @@ h3 {
 }
 
 .custom-scroller::-webkit-scrollbar-track {
-  background: #f1f1f100; 
+  background: #f1f1f100;
 }
 
 .custom-scroller:hover::-webkit-scrollbar-thumb {
@@ -374,7 +374,7 @@ h3 {
 }
 
 .custom-scroller::-webkit-scrollbar-thumb:hover {
-  background: #555; 
+  background: #555;
 }
 
 .question-Card {
@@ -397,18 +397,28 @@ h3 {
 .tag-list__menu-list::-webkit-scrollbar {
   width: 8px;
 }
+
 .tag-list__menu-list::-webkit-scrollbar-track {
-  background: #f1f1f100; 
+  background: #f1f1f100;
 }
 
 .tag-list__menu-list:hover::-webkit-scrollbar-thumb {
   background: #cacaca;
   border-radius: 8px
 }
+
 .tag-list__menu-list::-webkit-scrollbar-thumb:hover {
-  background: #555; 
+  background: #555;
 }
 
 .tag-list__option {
   border-bottom: 1px solid #18099e85;
+}
+
+.text-excilips {
+  display: block;
+  width: 95%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

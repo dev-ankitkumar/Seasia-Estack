@@ -26,7 +26,23 @@ export const getQuestionByID = createAsyncThunk(
     }
   }
 );
-
+export const postAnswerByID = createAsyncThunk(
+  "postAnswerById",
+  async (userData, thunkApi) => {
+    try {
+      const token = thunkApi.getState().auth.user.access_token;
+      return await questionIdService.AnswerPostById(userData, token);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.string();
+      return thunkApi.rejectWithValue(message);
+    }
+  }
+);
 export const questionIdSlice = createSlice({
   name: "question",
   initialState,
@@ -47,7 +63,19 @@ export const questionIdSlice = createSlice({
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
-        // state.question = null;
+      })
+      .addCase(postAnswerByID.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(postAnswerByID.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSucess = true;
+        state.question = action.payload;
+      })
+      .addCase(postAnswerByID.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
       });
   },
 });
