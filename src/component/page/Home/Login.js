@@ -14,21 +14,22 @@ export default function Login() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const { user, isLoading, isError, isSuccess, message } = useSelector(
+  const { user, isLoading, isError, isSucess, message } = useSelector(
     (state) => state.auth
   );
   useEffect(() => {
     if (isError) {
       toast.error(message);
     }
-    if (isSuccess || user) {
+    if (isSucess) {
+      console.log("is success");
       navigate("/");
       toast.success("Welcome Back", {
         position: toast.POSITION.TOP_RIGHT,
       });
+      // dispatch(reset());
     }
-    dispatch(reset());
-  }, [user]);
+  }, [user, isSucess]);
 
   const handleChange = (e) => {
     setFormData((prevState) => ({
