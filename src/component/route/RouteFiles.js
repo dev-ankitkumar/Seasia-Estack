@@ -18,7 +18,7 @@ export default function RouteFiles() {
       <BrowserRouter>
         <div className="container">
           <Header />
-          <div style={{ marginLeft: "220px" }}>
+          <div style={{ marginLeft: "285px", paddingTop: "63px" }}>
             <Routes>
               <Route path="/" element={<Dashboard />} />
               <Route path="/login" element={<Login />} />
@@ -28,7 +28,7 @@ export default function RouteFiles() {
               <Route path="/question/:id" element={<ViewSingleQuestion />} />
               <Route path="/user" element={<User />} />
               <Route path="/category" element={<Category />} />
-              <Route path="/loader" element={<Spinner />} />
+              {/* <Route path="/loader" element={<Spinner />} /> */}
             </Routes>
           </div>
         </div>

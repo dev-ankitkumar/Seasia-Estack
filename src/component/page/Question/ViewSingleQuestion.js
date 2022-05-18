@@ -19,33 +19,33 @@ export default function ViewSingleQuestion() {
 
   const questiondata = question?.data;
   return (
-    <>
+    <section  className="text-dark m-5 pb-4">
       <div>
         {questiondata?.question.map((x, index) => (
-          <section className="form" key={index}>
-            <div className="form-group p-t-20 text-start pointer">
-              <div className="shadow-sm p-3 mb-5 bg-body rounded">
-                <div>title:{x.title}</div>
-                <div>{x.description}</div>
+          <div className="single-qust-card" key={index}>
+            <div className="text-start pointer">
+              <div className="p-3">
+                <div className="border-bottom pb-1">Title: {x.title}</div>
+                <div className="mt-2">{x.description}</div>
               </div>
             </div>
-          </section>
+          </div>
         ))}
       </div>
       <div>
         {questiondata?.answers.map((x) => (
           <>
-            <section className="form">
-              <div className="form-group p-t-20 text-start pointer">
-                <div className="shadow-sm p-3 mb-5 bg-body rounded">
-                  <div>title:{x.title}</div>
-                  <div>{x.description}</div>
+            <div className="single-qust-card">
+              <div className="text-start pointer">
+                <div className="p-3">
+                  <div className="border-bottom pb-1">Title: {x.title}</div>
+                  <div className="mt-2">{x.description}</div>
                 </div>
               </div>
-            </section>
+            </div>
           </>
         ))}
       </div>
-    </>
+    </section>
   );
 }

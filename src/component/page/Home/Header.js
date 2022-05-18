@@ -1,5 +1,4 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { logout, reset } from "../../features/auth/authSlice";
@@ -29,46 +28,51 @@ export default function Header() {
   const nameuser = user?.user?.name?.charAt(0).toUpperCase();
   return (
     <>
-      <header className="header shadow-sm bg-light">
+      <header className="header shadow-sm text-white">
         <div className="logo">
           <NavLink to="/">
             <div className="d-flex align-items-center fs-2 fw-semibold">
               <img src={logo} alt="" />
-              <div>{data.AppName}</div>
+              <div className="h3 my-auto text-light">{data.AppName}</div>
             </div>
           </NavLink>
         </div>
-        <div>
+        <div className="search-bar">
           <input type="text" placeholder="Search..." className="searchText1" />
         </div>
         <ul className="ul-index">
           {user ? (
             <li className="d-flex align-items-center">
+
+              {/* <NavLink to="/post-question" className="pe-3 ask-for-help">
+                Ask for Help!
+              </NavLink> */}
+
+
               <span className="p-r-5 pointer">
-                Welcome {user ? <>{user.user.name}</> : null}
+
+                Welcome {user ? <span className="fw-bold ask-for-help">{user.user.name}</span> : null}
+
               </span>
 
               <button
                 type="button"
-                className="btn"
-                onClick={() => {
-                  if (!dropDownOption) {
-                    setDropDownOption(true);
-                  } else {
-                    setDropDownOption(false);
-                  }
-                }}
+                className="btn profile0"
+                onClick={()=>{setDropDownOption(!dropDownOption)}}
               >
                 <div className="profile1">
                   <div className="profile2">{nameuser}</div>
                 </div>
               </button>
               {dropDownOption ? (
+                <div onClick={()=>{setDropDownOption(false)}} className="backDrop">
                 <div className="dropdown1">
-                  <ul className="ul1 flex-column">
-                    <li className="li1">
-                      <button className="btn" onClick={btnLogout}>
-                        <img src={signoutlogo} alt="" />
+                  <ul className="ul1 flex-column my-auto">
+                    <li className="fw-bold border-bottom mx-3 mb-3">{user.user.name}</li>
+                    <li><p className="text-info pointer fs-5 fw-semibold btn btn-outine-info">Edit Profile</p></li>
+                    <li className="">
+                      <button className="btn btn-danger" onClick={btnLogout}>
+                        <img src={signoutlogo} className="me-2" alt="" />
                         LogOut
                       </button>
                     </li>
@@ -77,18 +81,25 @@ export default function Header() {
                     <li className="li1">Option 4</li> */}
                   </ul>
                 </div>
+                </div>
               ) : (
                 <></>
               )}
             </li>
           ) : (
             <li className="d-flex">
-              <NavLink to="/login" className="p-r-20">
-                <img src={login} alt="" />
+              <NavLink
+                to="/login"
+                className="btn btn-success text-white p-r-20 me-2"
+              >
+                <img src={login} alt="" className="me-2" />
                 login
               </NavLink>
-              <NavLink to="/signup">
-                <img src={signup} alt="" />
+              <NavLink
+                to="/signup"
+                className="btn btn-outline-success text-white"
+              >
+                <img src={signup} alt="" className="me-2" />
                 Signup
               </NavLink>
             </li>
