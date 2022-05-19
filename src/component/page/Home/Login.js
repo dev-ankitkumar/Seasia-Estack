@@ -14,21 +14,22 @@ export default function Login() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const { user, isLoading, isError, isSuccess, message } = useSelector(
+  const { user, isLoading, isError, isSucess, message } = useSelector(
     (state) => state.auth
   );
   useEffect(() => {
-    if (isError) {
-      toast.error(message);
-    }
-    if (isSuccess || user) {
+    console.log(user);
+    if (user?.message == "Invalid Credentials") {
+      toast.error(user.message);
+      navigate("/login");
+      dispatch(reset());
+    } else if (user?.access_token) {
       navigate("/");
       toast.success("Welcome Back", {
         position: toast.POSITION.TOP_RIGHT,
       });
     }
-    dispatch(reset());
-  }, [user]);
+  }, [user, isSucess]);
 
   const handleChange = (e) => {
     setFormData((prevState) => ({
@@ -76,7 +77,17 @@ export default function Login() {
               onChange={handleChange}
             />
           </div>
-          <div className="form-group mt-5">
+          <div className="form-check text-start">
+            <input
+              type="checkbox"
+              className="form-check-input"
+              id="exampleCheck1"
+            />
+            <label className="form-check-label" for="exampleCheck1">
+              Remember me
+            </label>
+          </div>
+          <div className="form-group mt-4">
             <button
               type="submit"
               className="btn btn-success"

@@ -35,10 +35,10 @@ export default function SideBar(props) {
           {props.user ? (
             <NavLink
               to="/"
-              className="p-b-10 p-t-10 text-color"
+              className="p-b-10 p-t-10 text-color ps-3"
               style={({ isActive }) => ({
                 color: isActive ? "black" : "",
-                background: isActive ? "rgb(72 133 225)" : "",
+                background: isActive ? "#e6e6e6" : "",
                 borderRadius: isActive ? "10px" : "",
               })}
             >

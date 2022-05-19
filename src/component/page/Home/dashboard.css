@@ -1,3 +1,8 @@
+.profile0:focus {
+    box-shadow: none;
+    border: none;
+}
+
 .profile1 {
     width: 25px;
     height: 25px;
@@ -9,8 +14,9 @@
     width: 100%;
     text-align: center;
     color: white;
-    font-size: 23px;
+    font-size: 19px;
     line-height: 23px;
+    padding: 1px;
 }
 
 .search-bar {
@@ -50,17 +56,30 @@
     border: 1px solid rgba(65, 65, 65, 0.575)   
 }
 
+.backDrop {
+    height: 100%;
+    width: 100%;
+    background-color: #05012975;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
 .dropdown1 {
     position: absolute;
-    top: 100%;
+    top: 64px;
     display: flex;
     right: -1px;
-    height: fit-content;
-    width: 150px;
+    height: 12rem;
+    width: 250px;
     z-index: 999;
+    background-color: #210036;
     border: 1px solid rgba(0, 0, 0, 0.04);
+    border-radius: 5px;
     box-shadow: 0 16px 24px 2px rgb(0 0 0 / 14%);
     flex-direction: column;
+    margin-right: 1.5rem;
 }
 
 .ul-index {
@@ -77,5 +96,6 @@
     position: absolute;
     background-color: aliceblue;
     border: 1px solid rgba(0, 0, 0, 0.04);
+    border-radius: 5px;
     box-shadow: 0 16px 24px 2px rgb(0 0 0 / 14%);
 }

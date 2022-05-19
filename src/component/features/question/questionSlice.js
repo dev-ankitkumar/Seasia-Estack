@@ -43,6 +43,23 @@ export const postQuestion = createAsyncThunk(
     }
   }
 );
+export const postQuestionByID = createAsyncThunk(
+  "postQuestionById",
+  async (questionData, thunkApi) => {
+    try {
+      const token = thunkApi.getState().auth.user.access_token;
+      return await questionService.questionPost(questionData, token);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.string();
+      return thunkApi.rejectWithValue(message);
+    }
+  }
+);
 export const questionSlice = createSlice({
   name: "question",
   initialState,

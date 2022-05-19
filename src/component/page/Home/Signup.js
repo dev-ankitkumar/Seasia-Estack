@@ -35,7 +35,7 @@ export default function Signup() {
       navigate("/");
     }
     dispatch(reset());
-  }, [user]);
+  }, [user, isError, isLoading, isSuccess, navigate, dispatch]);
   const submitHandle = (e) => {
     e.preventDefault();
     if (password !== password2) {
@@ -55,10 +55,12 @@ export default function Signup() {
     return <Spinner />;
   }
   return (
-    <section  className="profile-card m-5 py-4 shadow">
+    <section className="profile-card m-5 py-4 shadow">
       <section className="">
         <h1>Create your eStack account</h1>
-        <p className="ask-for-help">Complete the following information to get started.</p>
+        <p className="ask-for-help">
+          Complete the following information to get started.
+        </p>
       </section>
       <section className="form">
         <form onSubmit={submitHandle} className="form1">
@@ -128,9 +130,16 @@ export default function Signup() {
               onChange={handleChange}
             />
           </div>
-          <div class="form-group form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1"/>
-            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+          <div className="form-check  text-start">
+            <input
+              type="checkbox"
+              className="form-check-input"
+              id="exampleCheck1"
+            />
+            <label className="form-check-label" for="exampleCheck1">
+              Please check to indicate that you agree with the{" "}
+              <span className="text-info ">Terms of Use</span>
+            </label>
           </div>
           <div className="form-group mt-4">
             <button
