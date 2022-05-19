@@ -19,6 +19,7 @@ export default function AskQuestion() {
   const [category_id, setCategory_id] = useState(null);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [addDescription, setAddDescription] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
   // const selector = useSelector();
@@ -50,7 +51,15 @@ export default function AskQuestion() {
       });
     } else {
       const cateogry_id = category_id[0].value;
-      dispatch(postQuestion({ cateogry_id, title, description, post_type: 1 }));
+      dispatch(
+        postQuestion({
+          cateogry_id,
+          title,
+          description,
+          post_type: 1,
+          additional_desc: addDescription,
+        })
+      );
 
       toast.success("Question Posted Successfully", {
         position: toast.POSITION.TOP_RIGHT,
@@ -116,6 +125,18 @@ export default function AskQuestion() {
               }}
               onFocus={(event, editor) => {
                 // console.log("Focus.", editor);
+              }}
+            />
+          </div>
+          <div>
+            <input
+              type="text"
+              id="email"
+              name="desc"
+              placeholder="Additional Information"
+              value={addDescription}
+              onChange={(e) => {
+                setAddDescription(e.target.value);
               }}
             />
           </div>

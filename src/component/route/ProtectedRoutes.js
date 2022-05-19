@@ -3,10 +3,9 @@ import { Navigate, Outlet } from "react-router-dom";
 import { useSelector } from "react-redux";
 const useAuth = () => {
   //   const userdata = useSelector((state) => state.auth.user);
-  const userdata = localStorage.getItem("user");
-  const user = userdata ? { loggedIn: true } : { loggedIn: false };
-  console.log(user);
-  console.log(userdata);
+  const userdata = JSON.parse(localStorage.getItem("user"));
+  const user = userdata.access_token ? { loggedIn: true } : { loggedIn: false };
+
   return user && user.loggedIn;
 };
 

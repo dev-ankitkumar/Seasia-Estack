@@ -1,5 +1,6 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import Pagination from "../Pagination/Pagination";
+import CkEditorHtmlShow from "./CkEditorHtmlShow";
 export default function FilteredQuestion({
   question,
   indexOfFirstpost,
@@ -24,7 +25,10 @@ export default function FilteredQuestion({
           className="shadow-sm p-3 mb-5 bg-body rounded text-black"
         >
           <div className="fs-3 fw-semibold">{x.title}</div>
-          <div className="fs-5  text-excilips">{x.description}</div>
+          <div className="fs-5  text-excilips">
+            <CkEditorHtmlShow data={x.description} />
+            {/* {x.description} */}
+          </div>
         </div>
       </NavLink>
     </div>

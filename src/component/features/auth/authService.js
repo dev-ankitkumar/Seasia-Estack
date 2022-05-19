@@ -16,8 +16,8 @@ const login = async (userData) => {
   const response = await axios.post(base_URL + "login", userData);
   if (response.data.access_token) {
     localStorage.setItem("user", JSON.stringify(response.data));
-    return response.data;
   }
+  return response.data;
 };
 
 //logout

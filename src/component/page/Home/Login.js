@@ -18,16 +18,16 @@ export default function Login() {
     (state) => state.auth
   );
   useEffect(() => {
-    if (isError) {
-      toast.error(message);
-    }
-    if (isSucess) {
-      console.log("is success");
+    console.log(user);
+    if (user?.message == "Invalid Credentials") {
+      toast.error(user.message);
+      navigate("/login");
+      dispatch(reset());
+    } else if (user?.access_token) {
       navigate("/");
       toast.success("Welcome Back", {
         position: toast.POSITION.TOP_RIGHT,
       });
-      // dispatch(reset());
     }
   }, [user, isSucess]);
 

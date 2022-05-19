@@ -14,7 +14,6 @@ export default function Header() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
-  console.log(user);
   const btnLogout = () => {
     dispatch(logout());
     dispatch(reset());
@@ -80,7 +79,7 @@ export default function Header() {
                       </li>
                       <li>
                         <p className="text-info pointer fs-5 fw-semibold btn btn-outine-info">
-                          Edit Profile
+                          <NavLink to="/profile">Edit Profile</NavLink>
                         </p>
                       </li>
                       <li className="">

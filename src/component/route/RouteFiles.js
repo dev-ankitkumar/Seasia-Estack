@@ -12,6 +12,7 @@ import User from "../page/User/User";
 import ViewSingleQuestion from "../page/Question/ViewSingleQuestion";
 import Spinner from "../spinner/Spinner";
 import ProtectedRoutes from "./ProtectedRoutes";
+import Profile from "../page/Profile/Profile";
 export default function RouteFiles() {
   const isAuthenticated = localStorage.getItem("user");
   return (
@@ -19,7 +20,9 @@ export default function RouteFiles() {
       <BrowserRouter>
         <div className="container">
           <Header />
-          <div style={{ marginLeft: "285px", paddingTop: "63px" }}>
+          <div className="screen-area">
+            {/* <Header />
+          <div style={{ marginLeft: "285px", paddingTop: "63px" }}> */}
             <Routes>
               <Route
                 path="/login"
@@ -34,6 +37,7 @@ export default function RouteFiles() {
                 <Route path="/" element={<Dashboard />} />
                 <Route path="/post-question" element={<PostQuestion />} />
                 <Route path="/user" element={<User />} />
+                <Route path="/profile" element={<Profile />} />
               </Route>
               <Route exact path="/question" element={<ViewQuestion />} />
               <Route path="/question/:id" element={<ViewSingleQuestion />} />
