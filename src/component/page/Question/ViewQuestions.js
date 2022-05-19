@@ -7,6 +7,7 @@ import { getQuestionByID } from "../../features/question/questionIdSlice";
 import { getQuestion } from "../../features/question/questionSlice";
 import FilteredQuestion from "./FilteredQuestion";
 import Spinner from "../../spinner/Spinner";
+import CkEditorHtmlShow from "./CkEditorHtmlShow";
 // import Pagination from "../Pagination/Pagination";
 import Postpagination from "../Pagination/Pagination";
 export default function ViewQuestion() {
@@ -59,7 +60,8 @@ export default function ViewQuestion() {
                           {x.title}
                         </div>
                         <div className="fs-5  text-excilips">
-                          {x.description}
+                          <CkEditorHtmlShow data={x.description} />
+                          {/* {x.description} */}
                         </div>
                         {/* <div>{x.user_id}</div> */}
                         <div className="fs-6 text-muted d-flex justify-content-between w-100">
@@ -123,6 +125,7 @@ export default function ViewQuestion() {
                       setCurrentPage(1);
                     }}
                   >
+                    
                     {x.category}
                   </p>
                   {/* <div>Description:{x.description}</div> */}

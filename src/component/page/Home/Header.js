@@ -43,22 +43,23 @@ export default function Header() {
         <ul className="ul-index">
           {user ? (
             <li className="d-flex align-items-center">
-
               {/* <NavLink to="/post-question" className="pe-3 ask-for-help">
                 Ask for Help!
               </NavLink> */}
 
-
               <span className="p-r-5 pointer">
-
-                Welcome {user ? <span className="fw-bold ask-for-help">{user.user.name}</span> : null}
-
+                Welcome{" "}
+                {user ? (
+                  <span className="fw-bold ask-for-help">{user.user.name}</span>
+                ) : null}
               </span>
 
               <button
                 type="button"
                 className="btn profile0"
-                onClick={()=>{setDropDownOption(!dropDownOption)}}
+                onClick={() => {
+                  setDropDownOption(!dropDownOption);
+                }}
               >
                 <div className="profile1">
                   <div className="profile2">{nameuser}</div>
@@ -83,8 +84,8 @@ export default function Header() {
                     {/* <li className="li1">Option 2</li>
                     <li className="li1">Option 3</li>
                     <li className="li1">Option 4</li> */}
-                  </ul>
-                </div>
+                    </ul>
+                  </div>
                 </div>
               ) : (
                 <></>

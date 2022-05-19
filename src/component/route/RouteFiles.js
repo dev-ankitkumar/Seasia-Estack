@@ -11,8 +11,10 @@ import Category from "../page/Category/Category";
 import User from "../page/User/User";
 import ViewSingleQuestion from "../page/Question/ViewSingleQuestion";
 import Spinner from "../spinner/Spinner";
+import ProtectedRoutes from "./ProtectedRoutes";
 import Profile from "../page/Profile/Profile";
 export default function RouteFiles() {
+  const isAuthenticated = localStorage.getItem("user");
   return (
     <>
       <BrowserRouter>
@@ -20,13 +22,23 @@ export default function RouteFiles() {
           <Header />
           <div className='screen-area'>
             <Routes>
-              <Route path="/" element={<Dashboard />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/signup" element={<Signup />} />
+              <Route
+                path="/login"
+                element={isAuthenticated ? <Dashboard /> : <Login />}
+              />
+              <Route
+                path="/signup"
+                element={isAuthenticated ? <Dashboard /> : <Signup />}
+              />
+
+              <Route element={<ProtectedRoutes />}>
+                <Route path="/" element={<Dashboard />} />
+                <Route path="/post-question" element={<PostQuestion />} />
+                <Route path="/user" element={<User />} />
+                <Route path="/profile" element={<Profile />} />
+              </Route>
               <Route exact path="/question" element={<ViewQuestion />} />
-              <Route path="/post-question" element={<PostQuestion />} />
               <Route path="/question/:id" element={<ViewSingleQuestion />} />
-              <Route path="/user" element={<User />} />
               <Route path="/category" element={<Category />} />
               <Route path="/profile" element={<Profile />} />
               {/* <Route path="/loader" element={<Spinner />} /> */}
