@@ -17,8 +17,8 @@ export default function Dashboard() {
 
   return (
     <>
-      <section className="heading text-start">
-
+      <section className="dashboard-design">
+        <div>SEASIA ESTACK</div>
       </section>
     </>
   );

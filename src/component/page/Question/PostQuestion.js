@@ -44,28 +44,40 @@ export default function AskQuestion() {
 
   const btnSubmit = (e) => {
     e.preventDefault();
-    console.log(category_id[0].value, "cateogry_id");
-    if (!title && !description) {
+    if (!title) {
+      toast.error("Enter the title", {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+      return false;
+    }
+    if (!description) {
       toast.error("Enter the Content", {
         position: toast.POSITION.TOP_RIGHT,
       });
-    } else {
-      const cateogry_id = category_id[0].value;
-      dispatch(
-        postQuestion({
-          cateogry_id,
-          title,
-          description,
-          post_type: 1,
-          additional_desc: addDescription,
-        })
-      );
-
-      toast.success("Question Posted Successfully", {
+      return false;
+    }
+    if (!category_id) {
+      toast.error("Enter the Category", {
         position: toast.POSITION.TOP_RIGHT,
       });
-      navigate("/");
+      return false;
     }
+
+    const cateogry_id = category_id[0].value;
+    dispatch(
+      postQuestion({
+        cateogry_id,
+        title,
+        description,
+        post_type: 1,
+        additional_desc: addDescription,
+      })
+    );
+
+    toast.success("Question Posted Successfully", {
+      position: toast.POSITION.TOP_RIGHT,
+    });
+    navigate("/myquestion");
   };
 
   const renderTooltip = (props) => (
@@ -89,7 +101,9 @@ export default function AskQuestion() {
                 </Tooltip>
               }
             >
-              <label id="label-title">Title</label>
+              <label id="label-title" className="text-bold">
+                Title
+              </label>
               {/* <button variant="secondary">Tooltip on {placement}</button> */}
             </OverlayTrigger>
             {/* <label>
@@ -106,7 +120,7 @@ export default function AskQuestion() {
               }}
             />
           </div>
-          <div className="question-title margin text-dark">
+          <div className="question-title margin text-dark p-b-20 ">
             <CKEditor
               editor={Editor}
               data=""
@@ -159,6 +173,7 @@ export default function AskQuestion() {
             </button>
           </div>
         </div>
+
         {/* </form> */}
       </section>
     </div>

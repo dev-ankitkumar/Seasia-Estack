@@ -172,7 +172,9 @@ export default function Login() {
       navigate("/login");
       dispatch(reset());
       localStorage.removeItem("login");
-    } else if (user?.access_token) {
+      return;
+    }
+    if (user?.access_token) {
       navigate("/");
       toast.success("Welcome Back", {
         position: toast.POSITION.TOP_RIGHT,

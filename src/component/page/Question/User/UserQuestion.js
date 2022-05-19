@@ -28,7 +28,7 @@ export default function UserQuestion() {
               <>
                 <div key={index} className="mb-4">
                   <NavLink to={`/question/${x.id}`}>
-                    <div className="shadow-sm p-3 bg-light rounded text-black question-Card ">
+                    <div className="shadow-sm p-3 bg-light rounded text-black question-Card1 ">
                       {/* <div className="fs-3 fw-semibold">{x.id}</div> */}
                       <div className="fs-4 fw-semibold border-bottom mb-2 pb-1">
                         {x.title}

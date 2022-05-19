@@ -31,14 +31,14 @@ export default function RouteFiles() {
                 path="/signup"
                 element={auth ? <Dashboard /> : <Signup />}
               />
-
+              <Route path="/" element={<Dashboard />} />
               <Route element={<ProtectedRoutes />}>
-                <Route path="/" element={<Dashboard />} />
                 <Route path="/post-question" element={<PostQuestion />} />
-                <Route path="/user" element={<User />} />
+
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/myquestion" element={<UserQuestion />} />
               </Route>
+              <Route path="/user" element={<User />} />
               <Route exact path="/question" element={<ViewQuestion />} />
               <Route path="/question/:id" element={<ViewSingleQuestion />} />
               <Route path="/category" element={<Category />} />
