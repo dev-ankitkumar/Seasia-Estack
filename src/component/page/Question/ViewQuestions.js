@@ -24,9 +24,9 @@ export default function ViewQuestion() {
   const { category } = useSelector((state) => state.category);
 
   const indexOfLastPost = currentPage * postsPerPage;
-
+  
   const indexOfFirstpost = indexOfLastPost - postsPerPage;
-
+  
   const currentPosts = question.slice(indexOfFirstpost, indexOfLastPost);
 
   const filteredPosts1 = [];

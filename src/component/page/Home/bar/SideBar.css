@@ -114,7 +114,7 @@ a:active {
 
 .h-sideBar {
     height: 100%;
-    width: 20%;
+    width: 285px;
     position: fixed;
     z-index: 1;
     left: 0;

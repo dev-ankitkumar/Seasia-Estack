@@ -138,7 +138,7 @@ export default function Signup() {
             />
             <label className="form-check-label" for="exampleCheck1">
               Please check to indicate that you agree with the{" "}
-              <span className="text-info ">Terms of Use</span>
+              <span className="text-info pointer">Terms of Use</span>
             </label>
           </div>
           <div className="form-group mt-4">

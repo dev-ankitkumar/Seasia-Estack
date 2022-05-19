@@ -66,29 +66,22 @@ export default function Header() {
                 </div>
               </button>
               {dropDownOption ? (
-                <div
-                  onClick={() => {
-                    setDropDownOption(false);
-                  }}
-                  className="backDrop"
-                >
-                  <div className="dropdown1">
-                    <ul className="ul1 flex-column my-auto">
-                      <li className="fw-bold border-bottom mx-3 mb-3">
-                        {user.user.name}
-                      </li>
-                      <li>
-                        <p className="text-info pointer fs-5 fw-semibold btn btn-outine-info">
-                          <NavLink to="/profile">Edit Profile</NavLink>
-                        </p>
-                      </li>
-                      <li className="">
-                        <button className="btn btn-danger" onClick={btnLogout}>
-                          <img src={signoutlogo} className="me-2" alt="" />
-                          LogOut
-                        </button>
-                      </li>
-                      {/* <li className="li1">Option 2</li>
+                <div onClick={()=>{setDropDownOption(false)}} className="backDrop">
+                <div className="dropdown1">
+                  <ul className="ul1 flex-column my-auto">
+                    <li className="fw-bold border-bottom mx-3 mb-3">{user.user.name}</li>
+                    <li className="mx-auto" ><p className="text-info pointer fs-5 fw-semibold">
+                      <NavLink to="/profile">
+                        My Profile
+                      </NavLink>
+                    </p></li>
+                    <li className="">
+                      <button className="btn btn-danger" onClick={btnLogout}>
+                        <img src={signoutlogo} className="me-2" alt="" />
+                        LogOut
+                      </button>
+                    </li>
+                    {/* <li className="li1">Option 2</li>
                     <li className="li1">Option 3</li>
                     <li className="li1">Option 4</li> */}
                     </ul>

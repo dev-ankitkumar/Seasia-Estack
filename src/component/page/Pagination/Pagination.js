@@ -15,7 +15,7 @@ const Postpagination = ({ postsPerPage, totalPosts, paginate, currentPage }) => 
 
 
   
-  if (currentPage > Math.ceil(Math.ceil(totalPosts / postsPerPage) * 25 / 100) && currentPage < Math.ceil(Math.ceil(totalPosts / postsPerPage) * 78 / 100)) {
+  if (currentPage > Math.ceil(Math.ceil(totalPosts / postsPerPage) * 28 / 100) && currentPage < Math.ceil(Math.ceil(totalPosts / postsPerPage) * 80 / 100)) {
     items.splice(1,Math.ceil(Math.ceil(totalPosts / postsPerPage) * 20 / 100), <Pagination.Ellipsis className="pagination-list" />)
     
     items.splice(Math.ceil(Math.ceil(totalPosts / postsPerPage) * 65 / 100) , Math.ceil(Math.ceil(totalPosts / postsPerPage) * 20 / 100), <Pagination.Ellipsis className="pagination-list" />)
