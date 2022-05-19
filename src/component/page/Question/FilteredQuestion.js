@@ -1,5 +1,5 @@
 import { NavLink, useNavigate } from "react-router-dom";
-import Pagination from "../Pagination/Pagination";
+import Postpagination from "../Pagination/Pagination";
 export default function FilteredQuestion({
   question,
   indexOfFirstpost,
@@ -39,7 +39,7 @@ export default function FilteredQuestion({
           {datafilter}
 
           {filtereddata.length > 5 ? (
-            <Pagination
+            <Postpagination
               postsPerPage={postsPerPage}
               totalPosts={filtereddata.length}
               paginate={paginate}

@@ -7,7 +7,8 @@ import { getQuestionByID } from "../../features/question/questionIdSlice";
 import { getQuestion } from "../../features/question/questionSlice";
 import FilteredQuestion from "./FilteredQuestion";
 import Spinner from "../../spinner/Spinner";
-import Pagination from "../Pagination/Pagination";
+// import Pagination from "../Pagination/Pagination";
+import Postpagination from "../Pagination/Pagination";
 export default function ViewQuestion() {
   const [categorySelection, setCategorySelection] = useState("");
   const [filterCategory, setFilterCategory] = useState(false);
@@ -20,8 +21,11 @@ export default function ViewQuestion() {
   );
 
   const { category } = useSelector((state) => state.category);
+
   const indexOfLastPost = currentPage * postsPerPage;
+  
   const indexOfFirstpost = indexOfLastPost - postsPerPage;
+  
   const currentPosts = question.slice(indexOfFirstpost, indexOfLastPost);
 
   const filteredPosts1 = [];
@@ -81,14 +85,16 @@ export default function ViewQuestion() {
                 categorySelection={categorySelection}
                 postsPerPage={postsPerPage}
                 paginate={paginate}
+                currentPage={currentPage}
               />
             )}
 
             {!filterCategory ? (
-              <Pagination
+              <Postpagination
                 postsPerPage={postsPerPage}
                 totalPosts={question.length}
                 paginate={paginate}
+                currentPage={currentPage}
               />
             ) : (
               <></>

@@ -69,7 +69,11 @@ export default function Header() {
                 <div className="dropdown1">
                   <ul className="ul1 flex-column my-auto">
                     <li className="fw-bold border-bottom mx-3 mb-3">{user.user.name}</li>
-                    <li><p className="text-info pointer fs-5 fw-semibold btn btn-outine-info">Edit Profile</p></li>
+                    <li><p className="text-info pointer fs-5 fw-semibold btn btn-outine-info">
+                      <NavLink to="/profile">
+                        Edit Profile
+                      </NavLink>
+                    </p></li>
                     <li className="">
                       <button className="btn btn-danger" onClick={btnLogout}>
                         <img src={signoutlogo} className="me-2" alt="" />

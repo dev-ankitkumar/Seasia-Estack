@@ -11,13 +11,14 @@ import Category from "../page/Category/Category";
 import User from "../page/User/User";
 import ViewSingleQuestion from "../page/Question/ViewSingleQuestion";
 import Spinner from "../spinner/Spinner";
+import Profile from "../page/Profile/Profile";
 export default function RouteFiles() {
   return (
     <>
       <BrowserRouter>
         <div className="container">
           <Header />
-          <div style={{ marginLeft: "285px", paddingTop: "63px" }}>
+          <div className='screen-area'>
             <Routes>
               <Route path="/" element={<Dashboard />} />
               <Route path="/login" element={<Login />} />
@@ -27,6 +28,7 @@ export default function RouteFiles() {
               <Route path="/question/:id" element={<ViewSingleQuestion />} />
               <Route path="/user" element={<User />} />
               <Route path="/category" element={<Category />} />
+              <Route path="/profile" element={<Profile />} />
               {/* <Route path="/loader" element={<Spinner />} /> */}
             </Routes>
           </div>
