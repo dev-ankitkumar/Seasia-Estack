@@ -50,7 +50,9 @@ export default function Header() {
               <span className="p-r-5 pointer">
                 Welcome{" "}
                 {user ? (
-                  <span className="fw-bold ask-for-help">{user.user.name}</span>
+                  <span className="fw-bold ask-for-help">
+                    {user?.user?.name}
+                  </span>
                 ) : null}
               </span>
 

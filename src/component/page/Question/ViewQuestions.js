@@ -33,12 +33,15 @@ export default function ViewQuestion() {
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
+  const getApiCall = async () => {
+    await dispatch(getQuestion());
+    await dispatch(getCategory());
+  };
   useEffect(() => {
     if (isError) {
       console.log("Error ");
     }
-    dispatch(getQuestion());
-    dispatch(getCategory());
+    getApiCall();
     // return () => {
     //   dispatch(reset());
     // };
@@ -125,7 +128,6 @@ export default function ViewQuestion() {
                       setCurrentPage(1);
                     }}
                   >
-                    
                     {x.category}
                   </p>
                   {/* <div>Description:{x.description}</div> */}

@@ -51,7 +51,6 @@ export const getUserQuestionByID = createAsyncThunk(
   async (_, thunkApi) => {
     try {
       const token = thunkApi.getState().auth.user.access_token;
-      console.log(token);
       return await questionIdService.userQuestionByID(token);
     } catch (error) {
       const message =
@@ -94,19 +93,6 @@ export const questionIdSlice = createSlice({
         state.question = action.payload;
       })
       .addCase(postAnswerByID.rejected, (state, action) => {
-        state.isLoading = false;
-        state.isError = true;
-        state.message = action.payload;
-      })
-      .addCase(getUserQuestionByID.pending, (state) => {
-        state.isLoading = true;
-      })
-      .addCase(getUserQuestionByID.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.isSucess = true;
-        state.question = action.payload;
-      })
-      .addCase(getUserQuestionByID.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
