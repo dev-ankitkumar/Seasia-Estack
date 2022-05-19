@@ -34,7 +34,7 @@ export default function SideBar(props) {
           )}
           {props.user ? (
             <NavLink
-              to="/"
+              to="/myquestion"
               className="p-b-10 p-t-10 text-color ps-3"
               style={({ isActive }) => ({
                 color: isActive ? "black" : "",

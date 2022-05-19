@@ -7,7 +7,7 @@ const initialState = {
   isLoading: false,
   message: "",
 };
-
+//get Answer By Question Id
 export const getQuestionByID = createAsyncThunk(
   "getQuestionByID",
   async (idData, thunkApi) => {
@@ -26,6 +26,7 @@ export const getQuestionByID = createAsyncThunk(
     }
   }
 );
+//Post Answer Comment
 export const postAnswerByID = createAsyncThunk(
   "postAnswerById",
   async (userData, thunkApi) => {
@@ -33,6 +34,25 @@ export const postAnswerByID = createAsyncThunk(
     try {
       const token = thunkApi.getState().auth.user.access_token;
       return await questionIdService.AnswerPostById(userData, token);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.string();
+      return thunkApi.rejectWithValue(message);
+    }
+  }
+);
+//User Posted Question By Id
+export const getUserQuestionByID = createAsyncThunk(
+  "getUserQuestionByID",
+  async (_, thunkApi) => {
+    try {
+      const token = thunkApi.getState().auth.user.access_token;
+      console.log(token);
+      return await questionIdService.userQuestionByID(token);
     } catch (error) {
       const message =
         (error.response &&
@@ -74,6 +94,19 @@ export const questionIdSlice = createSlice({
         state.question = action.payload;
       })
       .addCase(postAnswerByID.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(getUserQuestionByID.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getUserQuestionByID.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSucess = true;
+        state.question = action.payload;
+      })
+      .addCase(getUserQuestionByID.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;

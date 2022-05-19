@@ -13,6 +13,7 @@ import ViewSingleQuestion from "../page/Question/ViewSingleQuestion";
 import Spinner from "../spinner/Spinner";
 import ProtectedRoutes from "./ProtectedRoutes";
 import Profile from "../page/Profile/Profile";
+import UserQuestion from "../page/Question/User/UserQuestion";
 export default function RouteFiles() {
   const isAuthenticated = localStorage.getItem("user");
   return (
@@ -38,6 +39,7 @@ export default function RouteFiles() {
                 <Route path="/post-question" element={<PostQuestion />} />
                 <Route path="/user" element={<User />} />
                 <Route path="/profile" element={<Profile />} />
+                <Route path="/myquestion" element={<UserQuestion />} />
               </Route>
               <Route exact path="/question" element={<ViewQuestion />} />
               <Route path="/question/:id" element={<ViewSingleQuestion />} />

@@ -8,6 +8,15 @@ const questionGetByID = async (id) => {
   );
   return response.data;
 };
+//User Posted Question By Id
+const userQuestionByID = async (token) => {
+  const config = {
+    headers: { Authorization: `Bearer ${token}` },
+  };
+  console.log(config);
+  const response = await axios.get(base_URL + `question`, config);
+  return response.data;
+};
 //answer By Id
 const AnswerPostById = async (userdata, token) => {
   const config = {
@@ -19,5 +28,6 @@ const AnswerPostById = async (userdata, token) => {
 const questionIdService = {
   questionGetByID,
   AnswerPostById,
+  userQuestionByID,
 };
 export default questionIdService;
