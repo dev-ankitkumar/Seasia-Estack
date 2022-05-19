@@ -35,7 +35,7 @@ export default function ViewQuestion() {
   };
   const getApiCall = async () => {
     await dispatch(getQuestion());
-    await dispatch(getCategory());
+    dispatch(getCategory());
   };
   useEffect(() => {
     if (isError) {
@@ -63,19 +63,26 @@ export default function ViewQuestion() {
                           {x.title}
                         </div>
                         <div className="fs-5  text-excilips">
-                          <CkEditorHtmlShow data={x.description} />
+                          <CkEditorHtmlShow data={x?.description} />
                           {/* {x.description} */}
                         </div>
                         {/* <div>{x.user_id}</div> */}
                         <div className="fs-6 text-muted d-flex justify-content-between w-100">
                           <div>
-                            Created at{" "}
+                            Created at &nbsp;
                             {new Date(`${x.created_at}`).toDateString()}
                           </div>
                           <div>
-                            Updated_at at{" "}
+                            Updated at &nbsp;
                             {new Date(`${x.updated_at}`).toDateString()}
                           </div>
+                        </div>
+                        <div>
+                          {category?.info
+                            ?.filter((y) => y.id == `${x.cateogry_id}`)
+                            .map((z, index) => (
+                              <div className="btn btn-light">{z.category}</div>
+                            ))}
                         </div>
                       </div>
                     </NavLink>
@@ -136,7 +143,7 @@ export default function ViewQuestion() {
             </div>
           </div>
           <div className="form-group p-t-20">
-            <div className="rightBar-heading">Tabs</div>
+            <div className="rightBar-heading">Tags</div>
             <div className="rightBar-body custom-scroller">
               <p
                 className="pointer"

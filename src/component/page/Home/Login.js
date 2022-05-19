@@ -150,29 +150,35 @@ export default function Login() {
     }
     return err;
   }
-
-  useEffect(() => {
+  const checkCond = async () => {
     if (Object.keys(error1).length == 0 && submit) {
       const userData = {
         email: loginData.email,
         password: loginData.password,
       };
-      dispatch(login(userData));
-      if (user?.message == "Invalid Credentials") {
-        toast.error(user.message);
-        navigate("/login");
-        dispatch(reset());
-        localStorage.removeItem("login");
-      } else if (user?.access_token) {
-        navigate("/");
-        toast.success("Welcome Back", {
-          position: toast.POSITION.TOP_RIGHT,
-        });
-      }
+      await dispatch(login(userData));
+      console.log(user);
+
       dispatch(reset());
     }
+  };
+  useEffect(() => {
+    checkCond();
   }, [error1]);
 
+  useEffect(() => {
+    if (user?.message == "Invalid Credentials") {
+      toast.error(user.message);
+      navigate("/login");
+      dispatch(reset());
+      localStorage.removeItem("login");
+    } else if (user?.access_token) {
+      navigate("/");
+      toast.success("Welcome Back", {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+    }
+  }, [user]);
   if (isLoading) {
     return <Spinner />;
   }

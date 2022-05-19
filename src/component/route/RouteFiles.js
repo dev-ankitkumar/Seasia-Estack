@@ -14,8 +14,9 @@ import Spinner from "../spinner/Spinner";
 import ProtectedRoutes from "./ProtectedRoutes";
 import Profile from "../page/Profile/Profile";
 import UserQuestion from "../page/Question/User/UserQuestion";
+import { useAuth } from "./ProtectedRoutes";
 export default function RouteFiles() {
-  const isAuthenticated = localStorage.getItem("user");
+  const auth = useAuth();
   return (
     <>
       <BrowserRouter>
@@ -25,13 +26,10 @@ export default function RouteFiles() {
             {/* <Header />
           <div style={{ marginLeft: "285px", paddingTop: "63px" }}> */}
             <Routes>
-              <Route
-                path="/login"
-                element={isAuthenticated ? <Dashboard /> : <Login />}
-              />
+              <Route path="/login" element={auth ? <Dashboard /> : <Login />} />
               <Route
                 path="/signup"
-                element={isAuthenticated ? <Dashboard /> : <Signup />}
+                element={auth ? <Dashboard /> : <Signup />}
               />
 
               <Route element={<ProtectedRoutes />}>

@@ -8,12 +8,15 @@ import SideBar from "./bar/SideBar";
 import signoutlogo from "../../assets/images/signoutlogo.svg";
 import login from "../../assets/images/login.svg";
 import signup from "../../assets/images/signup.svg";
+import { useAuth } from "../../route/ProtectedRoutes";
 import "./dashboard.css";
 export default function Header() {
   const [dropDownOption, setDropDownOption] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
+  const auth = useAuth();
+  console.log(auth);
   const btnLogout = () => {
     dispatch(logout());
     dispatch(reset());
@@ -41,7 +44,7 @@ export default function Header() {
           <input type="text" placeholder="Search..." className="searchText1" />
         </div>
         <ul className="ul-index">
-          {user ? (
+          {auth ? (
             <li className="d-flex align-items-center">
               {/* <NavLink to="/post-question" className="pe-3 ask-for-help">
                 Ask for Help!
@@ -120,7 +123,7 @@ export default function Header() {
           )}
         </ul>
       </header>
-      <SideBar user={user} />
+      <SideBar user={auth} />
     </>
   );
 }

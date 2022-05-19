@@ -16,7 +16,7 @@ import { OverlayTrigger, Tooltip } from "react-bootstrap";
 import { Button } from "bootstrap";
 
 export default function AskQuestion() {
-  const [category_id, setCategory_id] = useState(null);
+  const [category_id, setCategory_id] = useState("");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [addDescription, setAddDescription] = useState("");
