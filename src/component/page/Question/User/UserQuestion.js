@@ -16,7 +16,9 @@ export default function UserQuestion() {
   useEffect(() => {
     callApi();
   }, [navigate]);
-
+  userquestion?.data?.map((x, index) => {
+    console.log(x);
+  });
   if (isLoading) return <Spinner />;
 
   return (
