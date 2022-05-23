@@ -2,15 +2,14 @@ import "react-toastify/dist/ReactToastify.css";
 import "./spinner.css";
 export default function Spinner() {
   return (
-
     <div>
-    <div class="multi-spinner-container">
-      <div class="multi-spinner">
-        <div class="multi-spinner">
-          <div class="multi-spinner">
-            <div class="multi-spinner">
-              <div class="multi-spinner">
-                <div class="multi-spinner">
+      <div class="multi-spinner-container">
+        <div className="multi-spinner">
+          <div className="multi-spinner">
+            <div className="multi-spinner">
+              <div className="multi-spinner">
+                <div className="multi-spinner">
+                  <div className="multi-spinner"></div>
                 </div>
               </div>
             </div>
@@ -18,7 +17,6 @@ export default function Spinner() {
         </div>
       </div>
     </div>
-  </div>
 
     // <div className="spinnerDiv">
     //   <div>

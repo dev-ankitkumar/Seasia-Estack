@@ -1,12 +1,16 @@
 import Login from "../page/Home/Login";
 import { Navigate, Outlet } from "react-router-dom";
 import { useSelector } from "react-redux";
-const useAuth = () => {
+import { useEffect } from "react";
+export const useAuth = () => {
   //   const userdata = useSelector((state) => state.auth.user);
   const userdata = JSON.parse(localStorage.getItem("user"));
-  const user = userdata.access_token ? { loggedIn: true } : { loggedIn: false };
+  console.log(userdata);
+  const user = userdata?.access_token
+    ? { loggedIn: true }
+    : { loggedIn: false };
 
-  return user && user.loggedIn;
+  return user.loggedIn;
 };
 
 const ProtectedRoutes = () => {

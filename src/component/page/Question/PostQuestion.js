@@ -14,9 +14,10 @@ import Overlay from "react-bootstrap/Overlay";
 import Popover from "react-bootstrap/Popover";
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
 import { Button } from "bootstrap";
+import Creatable from "react-select/creatable";
 
 export default function AskQuestion() {
-  const [category_id, setCategory_id] = useState(null);
+  const [category_id, setCategory_id] = useState("");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [addDescription, setAddDescription] = useState("");
@@ -41,31 +42,47 @@ export default function AskQuestion() {
     return { value: x.id, label: x.category };
   });
   const myArray = [];
-
+  const options = [
+    { value: "chocolate", label: "Chocolate" },
+    { value: "strawberry", label: "Strawberry" },
+    { value: "vanilla", label: "Vanilla" },
+  ];
   const btnSubmit = (e) => {
     e.preventDefault();
-    console.log(category_id[0].value, "cateogry_id");
-    if (!title && !description) {
+    if (!title) {
+      toast.error("Enter the title", {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+      return false;
+    }
+    if (!description) {
       toast.error("Enter the Content", {
         position: toast.POSITION.TOP_RIGHT,
       });
-    } else {
-      const cateogry_id = category_id[0].value;
-      dispatch(
-        postQuestion({
-          cateogry_id,
-          title,
-          description,
-          post_type: 1,
-          additional_desc: addDescription,
-        })
-      );
-
-      toast.success("Question Posted Successfully", {
+      return false;
+    }
+    if (!category_id) {
+      toast.error("Enter the Category", {
         position: toast.POSITION.TOP_RIGHT,
       });
-      navigate("/");
+      return false;
     }
+
+    const cateogry_id = category_id[0].value;
+    dispatch(
+      postQuestion({
+        cateogry_id,
+        title,
+        description,
+        post_type: 1,
+        additional_desc: addDescription,
+      })
+    );
+
+    toast.success("Question Posted Successfully", {
+      position: toast.POSITION.TOP_RIGHT,
+    });
+    navigate("/myquestion");
   };
 
   const renderTooltip = (props) => (
@@ -89,7 +106,9 @@ export default function AskQuestion() {
                 </Tooltip>
               }
             >
-              <label id="label-title">Title</label>
+              <label id="label-title" className="text-bold">
+                Title
+              </label>
               {/* <button variant="secondary">Tooltip on {placement}</button> */}
             </OverlayTrigger>
             {/* <label>
@@ -106,7 +125,7 @@ export default function AskQuestion() {
               }}
             />
           </div>
-          <div className="question-title margin text-dark">
+          <div className="question-title margin text-dark p-b-20 ">
             <CKEditor
               editor={Editor}
               data=""
@@ -140,18 +159,29 @@ export default function AskQuestion() {
               }}
             />
           </div>
-          <div className="question-title p-t-10 w-25">
-            <label>Tags</label>
-            <Select
-              className="text-dark"
-              classNamePrefix="tag-list"
-              closeMenuOnSelect={false}
-              isMulti
-              options={OptionsCheck}
-              onChange={(e) => {
-                setCategory_id(e);
-              }}
-            />
+          <div className="d-flex justify-content-between">
+            <div className="question-title p-t-10 w-25">
+              <label>Category</label>
+              <Select
+                className="text-dark"
+                classNamePrefix="tag-list"
+                closeMenuOnSelect={false}
+                isMulti
+                options={OptionsCheck}
+                onChange={(e) => {
+                  setCategory_id(e);
+                }}
+              />
+            </div>
+            <div className="question-title p-t-10 w-25">
+              <label>Tags</label>
+              <Creatable
+                isMulti
+                className="text-dark"
+                classNamePrefix="tag-list"
+                options={options}
+              />
+            </div>
           </div>
           <div className="text-start p-top-20">
             <button className="btn btn-success" onClick={btnSubmit}>
@@ -159,6 +189,7 @@ export default function AskQuestion() {
             </button>
           </div>
         </div>
+
         {/* </form> */}
       </section>
     </div>

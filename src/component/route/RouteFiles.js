@@ -13,8 +13,10 @@ import ViewSingleQuestion from "../page/Question/ViewSingleQuestion";
 import Spinner from "../spinner/Spinner";
 import ProtectedRoutes from "./ProtectedRoutes";
 import Profile from "../page/Profile/Profile";
+import UserQuestion from "../page/Question/User/UserQuestion";
+import { useAuth } from "./ProtectedRoutes";
 export default function RouteFiles() {
-  const isAuthenticated = localStorage.getItem("user");
+  const auth = useAuth();
   return (
     <>
       <BrowserRouter>
@@ -24,21 +26,19 @@ export default function RouteFiles() {
             {/* <Header />
           <div style={{ marginLeft: "285px", paddingTop: "63px" }}> */}
             <Routes>
-              <Route
-                path="/login"
-                element={isAuthenticated ? <Dashboard /> : <Login />}
-              />
+              <Route path="/login" element={auth ? <Dashboard /> : <Login />} />
               <Route
                 path="/signup"
-                element={isAuthenticated ? <Dashboard /> : <Signup />}
+                element={auth ? <Dashboard /> : <Signup />}
               />
-
+              <Route path="/" element={<Dashboard />} />
               <Route element={<ProtectedRoutes />}>
-                <Route path="/" element={<Dashboard />} />
                 <Route path="/post-question" element={<PostQuestion />} />
-                <Route path="/user" element={<User />} />
+
                 <Route path="/profile" element={<Profile />} />
+                <Route path="/myquestion" element={<UserQuestion />} />
               </Route>
+              <Route path="/user" element={<User />} />
               <Route exact path="/question" element={<ViewQuestion />} />
               <Route path="/question/:id" element={<ViewSingleQuestion />} />
               <Route path="/category" element={<Category />} />

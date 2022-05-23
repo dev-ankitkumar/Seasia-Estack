@@ -16,8 +16,11 @@ export default function FilteredQuestion({
     .map((x) => {
       filteredPosts1.push(x);
     });
-  const filteredPosts = filteredPosts1.slice(indexOfFirstpost, indexOfLastPost);
-  const datafilter = filteredPosts.map((x, index) => (
+  const filteredPosts = filteredPosts1?.slice(
+    indexOfFirstpost,
+    indexOfLastPost
+  );
+  const datafilter = filteredPosts?.map((x, index) => (
     <div key={index}>
       <NavLink to={`/question/${x.id}`}>
         <div
@@ -26,7 +29,7 @@ export default function FilteredQuestion({
         >
           <div className="fs-3 fw-semibold">{x.title}</div>
           <div className="fs-5  text-excilips">
-            <CkEditorHtmlShow data={x.description} />
+            <CkEditorHtmlShow data={x?.description} />
             {/* {x.description} */}
           </div>
         </div>
@@ -36,7 +39,7 @@ export default function FilteredQuestion({
   console.log(filtereddata.length);
   return (
     <>
-      {filtereddata.length === 0 ? (
+      {filtereddata?.length === 0 ? (
         <div>No Data Available</div>
       ) : (
         <>

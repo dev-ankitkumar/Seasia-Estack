@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 import "./SideBar.css";
 // import world1 from "../Assets/Images/world1.svg";
 export default function SideBar(props) {
+
   return (
     <div className="">
       <div className="flex-shrink-0 p-3 h-sideBar m-top-4 shadow-sm">
@@ -34,7 +35,7 @@ export default function SideBar(props) {
           )}
           {props.user ? (
             <NavLink
-              to="/"
+              to="/myquestion"
               className="p-b-10 p-t-10 text-color ps-3"
               style={({ isActive }) => ({
                 color: isActive ? "black" : "",
