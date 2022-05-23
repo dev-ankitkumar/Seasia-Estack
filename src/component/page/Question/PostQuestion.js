@@ -14,6 +14,7 @@ import Overlay from "react-bootstrap/Overlay";
 import Popover from "react-bootstrap/Popover";
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
 import { Button } from "bootstrap";
+import Creatable from "react-select/creatable";
 
 export default function AskQuestion() {
   const [category_id, setCategory_id] = useState("");
@@ -41,7 +42,11 @@ export default function AskQuestion() {
     return { value: x.id, label: x.category };
   });
   const myArray = [];
-
+  const options = [
+    { value: "chocolate", label: "Chocolate" },
+    { value: "strawberry", label: "Strawberry" },
+    { value: "vanilla", label: "Vanilla" },
+  ];
   const btnSubmit = (e) => {
     e.preventDefault();
     if (!title) {
@@ -154,18 +159,29 @@ export default function AskQuestion() {
               }}
             />
           </div>
-          <div className="question-title p-t-10 w-25">
-            <label>Tags</label>
-            <Select
-              className="text-dark"
-              classNamePrefix="tag-list"
-              closeMenuOnSelect={false}
-              isMulti
-              options={OptionsCheck}
-              onChange={(e) => {
-                setCategory_id(e);
-              }}
-            />
+          <div className="d-flex justify-content-between">
+            <div className="question-title p-t-10 w-25">
+              <label>Category</label>
+              <Select
+                className="text-dark"
+                classNamePrefix="tag-list"
+                closeMenuOnSelect={false}
+                isMulti
+                options={OptionsCheck}
+                onChange={(e) => {
+                  setCategory_id(e);
+                }}
+              />
+            </div>
+            <div className="question-title p-t-10 w-25">
+              <label>Tags</label>
+              <Creatable
+                isMulti
+                className="text-dark"
+                classNamePrefix="tag-list"
+                options={options}
+              />
+            </div>
           </div>
           <div className="text-start p-top-20">
             <button className="btn btn-success" onClick={btnSubmit}>

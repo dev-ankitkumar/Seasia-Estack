@@ -12,7 +12,7 @@ export default function CkEditorHtmlShow(props) {
           disabled
           data={props?.data}
           config={
-            ({ placeholder: "Enter Your Description..." },
+            ({ placeholder: "Enter Your Answer..." },
             {
               toolbar: [],
             })

@@ -84,7 +84,9 @@ export default function ViewSingleQuestion() {
                 <div className="fs-5  text-excilips">
                   <CkEditorHtmlShow data={x.description} />
                 </div>
-                <div className="border-bottom pb-1">{x.additional_desc}</div>
+                <div className="border-bottom pb-1">
+                  {x.length !== 0 && x.additional_desc}
+                </div>
                 <div className="fs-6 text-muted d-flex justify-content-between w-100">
                   <div>
                     Created at &nbsp;

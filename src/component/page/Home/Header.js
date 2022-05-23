@@ -20,7 +20,7 @@ export default function Header() {
   const btnLogout = () => {
     dispatch(logout());
     dispatch(reset());
-    navigate("/");
+    navigate("/login");
   };
   useEffect(() => {
     // console.log(dropDownOption);
